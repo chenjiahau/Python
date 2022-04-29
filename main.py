@@ -1,16 +1,54 @@
-# This is a sample Python script.
+from fastapi import FastAPI, Body, Path, HTTPException
+from starlette import status
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+app = FastAPI()
 
+todo_list = []
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+@app.get("/todos/all", status_code=status.HTTP_200_OK)
+async def read_todos():
+    if not todo_list:
+        raise HTTPException(status_code=404, detail={"error": "No todos found"})
 
+    return {"data": todo_list}
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+@app.get("/todos/{id}", status_code=status.HTTP_200_OK)
+async def read_todo(id: int = Path(gt=0)):
+    for todo in todo_list:
+        if todo["id"] == id:
+            return {"data": todo}
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    raise HTTPException(status_code=404, detail={"error": "Todo not found"})
+
+@app.post("/todos", status_code=status.HTTP_201_CREATED)
+async def create_todo(task=Body(...)):
+    if not task:
+        raise HTTPException(status_code=400, detail={"error": "Task is required"})
+
+    new_todo = {
+        "id": len(todo_list) + 1,
+        "task": task["task"].strip(),
+        "completed": False
+    }
+
+    todo_list.append(new_todo)
+    return {"data": new_todo}
+
+@app.put("/todos/{id}", status_code=status.HTTP_200_OK)
+async def update_todo(id: int, task=Body()):
+    for todo in todo_list:
+        if todo["id"] == id:
+            if task:
+                todo["task"] = task["task"].strip()
+            return {"data": todo}
+
+    raise HTTPException(status_code=404, detail={"error": "Todo not found"})
+
+@app.delete("/todos/{id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_todo(id: int):
+    for todo in todo_list:
+        if todo["id"] == id:
+            todo_list.remove(todo)
+            return
+
+    raise HTTPException(status_code=404, detail={"error": "Todo not found"})
