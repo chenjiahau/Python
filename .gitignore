@@ -1,1 +1,69 @@
 .DS_Store
+
+# --- General ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Backup and log files
+*.bak
+*.log
+*.swp
+*.swo
+
+# --- Django & Python ---
+# Django migrations
+**/migrations/
+
+# SQLite database
+*.sqlite3
+
+# Django stuff:
+*.env
+.env.*
+
+# Static & media files
+/staticfiles/
+/mediafiles/
+
+# Pyenv and Python virtual environment directories
+.venv/
+venv/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Local development configuration
+local_settings.py
+
+# Coverage reports
+htmlcov/
+.coverage
+*.cover
+.cache
+coverage.xml
+*.log
+
+# MyPy cache
+.mypy_cache/
+
+# --- Node.js (Vue3) ---
+# Node modules and logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite build output
+dist/
+
+# Vite cache files
+.vite/
+
+# --- OS-specific ---
+# macOS files
+.DS_Store
+
+# Linux generated files
+*.swp
