@@ -1,0 +1,35 @@
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: drf-db
+    environment:
+      POSTGRES_DB: drf
+      POSTGRES_USER: drf
+      POSTGRES_PASSWORD: drf
+    ports:
+      - "5432:5432"
+    restart: always
+  server:
+    build:
+      context: ./server
+    container_name: drf-server
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./server:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=drf-db
+      - DB_NAME=drf
+      - DB_USER=drf
+      - DB_PASS=drf
+    restart: always
+
+volumes:
+  postgres_data:
