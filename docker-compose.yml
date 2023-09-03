@@ -1,0 +1,35 @@
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: todo-db
+    environment:
+      POSTGRES_DB: todo
+      POSTGRES_USER: todo
+      POSTGRES_PASSWORD: todo
+    ports:
+      - "5432:5432"
+    restart: always
+  backend:
+    build:
+      context: ./backend
+    container_name: drf-backend
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=todo-db
+      - DB_NAME=todo
+      - DB_USER=todo
+      - DB_PASS=todo
+    restart: always
+
+volumes:
+  postgres_data:

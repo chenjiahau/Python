@@ -1,1 +1,102 @@
+# Python
+*.py[cod]
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+*.mo
+*.pot
+staticfiles/
+*.sqlite3
+
+# If you are using Django Compressor
+compressed/
+
+# Local environment settings
+.env
+*.env
+config/settings/local.py
+config/settings/local.yaml
+
+# If using Docker
+docker-compose*.yml
+.dockerignore
+*.env
+venv/
+*.pid
+*.seed
+
+# VS Code settings and Python extensions
+.vscode/
+
+# macOS
 .DS_Store
+
+# JetBrains IDEs (e.g., PyCharm)
+.idea/
+*.iml
+
+# Jupyter Notebooks (if any are used in the project)
+.ipynb_checkpoints/
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*.pyo
+
+# Testing
+htmlcov/
+.tox/
+.coverage
+coverage.*
+.cache
+nosetests.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# If using migrations
+migrations/
+!*/migrations/__init__.py
+
+# Pytest
+.pytest_cache/
+
+# Celery task queue
+celerybeat-schedule
+celerybeat.pid
+
+# Django static and media files
+static/
+media/
+
+# Node.js dependencies (if any frontend dependencies are included)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database backup files
+*.sql
+*.sqlite3
+
+# pipenv and poetry
+Pipfile.lock
+poetry.lock
+
+# Virtualenv
+*.venv/
+.venv/
+env/
+ENV/
+venv/
