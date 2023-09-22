@@ -1,0 +1,20 @@
+.bulk-import-devices-container{
+  .bulk-import-devices-notification *{
+    font-size: .75rem;
+    line-height: 28px;
+  }
+
+  .prompt-msg{
+    color: #797979;
+  }
+
+  .inline-msg-group-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+
+    div:global(.inline-msg) {
+      width: calc(100% - 20px);
+    }
+  }
+}

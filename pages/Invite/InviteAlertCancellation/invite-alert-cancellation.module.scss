@@ -1,0 +1,18 @@
+.invite-alert-cancellation-container{
+  .term-privacy-container{
+    a {
+      text-decoration: underline;
+      color: #5c5c5c;
+    }
+
+    &.disabled{
+      * {
+        color: #cccccc !important;
+      }
+    }
+  }
+
+  .btn-confirm{
+    width: 100%;
+  }
+}

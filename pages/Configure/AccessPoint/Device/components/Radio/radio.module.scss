@@ -1,0 +1,141 @@
+.radio-container,
+.radio-container--tband {
+  display: grid;
+  grid-template-columns: 200px repeat(2, 1fr);
+  grid-template-rows: 32px repeat(11, minmax(68px, max-content));
+  border: 1px solid #cccccc;
+
+  .header {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    background-color: #607896;
+    padding-left: 16px;
+  }
+
+  .item {
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .item-title {
+    color: #1c307d;
+    font-weight: bold;
+  }
+
+  .last-item {
+    height: 68px;
+    border-bottom: none;
+  }
+
+  @media screen and (max-width: 1100px) {
+    display: none;
+  }
+}
+
+.radio-container--tband {
+  grid-template-columns: 200px repeat(3, 1fr);
+}
+
+.field {
+  min-width: auto;
+  margin-right: 20px;
+}
+
+a.link {
+  color: #22b7db;
+  text-decoration: underline;
+}
+
+.not-full-page-content {
+  display: none;
+
+  // table-hover > tbody > tr:hover > * {
+  //   background-color: none;
+  // }
+
+  @media screen and (max-width: 1100px) {
+    display: block;
+  }
+}
+
+.tr {
+  background-color: none !important;
+}
+
+.td,
+.field-td {
+  display: flex;
+  align-items: center;
+  min-height: 53px;
+}
+
+.td {
+  color: #1c307d;
+  font-weight: bold;
+}
+
+.td--eligible-channel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 32px 0;
+
+  .top,
+  .bottom {
+    display: flex;
+    flex-wrap: wrap;
+
+    .sample {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-right: 24px;
+      margin-bottom: 4px;
+    }
+  }
+
+  .top {
+    gap: 8px;
+  }
+
+  .box {
+    width: 33px;
+    height: 28px;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 26px;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  .sample-box {
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+
+  .selected-box {
+    background-color: #22b7db;
+    color: #ffffff;
+  }
+
+  .disabled-box {
+    opacity: 0.5;
+    filter: contrast(100%);
+    cursor: default;
+  }
+
+  .synced-box {
+    background-color: #f59d24;
+  }
+}

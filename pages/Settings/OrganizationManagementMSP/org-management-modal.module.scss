@@ -1,0 +1,55 @@
+.create-org-container {
+  & .upload-image-hint {
+    color: #797979;
+    font-size: 0.75rem;
+  }
+}
+
+.create-site-container {
+  & .upload-image-hint {
+    color: #797979;
+    font-size: 0.75rem;
+  }
+
+  & .time-zone-hint {
+    color: #797979;
+    padding-top: 3px;
+    font-size: 0.7rem;
+  }
+
+  & .device-credentials-hint {
+    color: #797979;
+    letter-spacing: 0.1px;
+    font-size: 0.7rem;
+  }
+}
+
+.create-site-tag-container {
+  & .upload-image-hint {
+    color: #797979;
+    font-size: 0.75rem;
+  }
+
+  & .site-tag-hint {
+    color: #797979;
+    font-size: 0.7rem;
+  }
+}
+
+.invite-user-container {
+  & .email-hint {
+    color: #797979;
+    font-size: 0.7rem;
+  }
+}
+
+.sitetag-image,
+.site-image {
+  width: 100px;
+}
+
+.sitetag-custom-image,
+.site-custom-image {
+  width: 100px;
+  border-radius: 50%;
+}

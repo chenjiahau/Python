@@ -1,0 +1,108 @@
+.email-this-page-btn {
+  /* margin-right: 15px; */
+}
+
+.user-info-container {
+  padding-bottom: 30px;
+  padding-right: 8px;
+}
+
+.google-auth-container {
+}
+
+.qrcode-icon {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background: url(../../../assets/img/v2/QRcode.png) 0 center no-repeat;
+  background-size: contain;
+}
+
+.manually-code-list {
+  padding-left: 13px;
+}
+
+.manually-code-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.manually-code-container input {
+  width: 150px !important;
+}
+
+.manually-code-container > button {
+  min-width: 70px;
+}
+
+.user-img-container {
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.user-img-container > * {
+  margin-bottom: 10px;
+}
+
+.user-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #cccccc;
+  object-fit: cover;
+}
+
+.user-img-button-group {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  margin: 0 auto;
+  /* text-align: center; */
+}
+
+.user-img-button-group > button {
+  margin-bottom: 10px;
+}
+
+.access-privilege-container .download-btn {
+  flex-grow: 0 !important;
+  padding: 0 20px;
+}
+
+.apply-btn-group {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.small-input-successful {
+  color: #38bd30;
+  background: url(../../../assets/img/v2/icon/icon_message_successful.png) 0
+    center no-repeat;
+  -moz-background-size: 16px 16px;
+  -webkit-background-size: 16px 16px;
+  -o-background-size: 16px 16px;
+  background-size: 16px 16px;
+  font-size: 0.6rem;
+  white-space: nowrap;
+  padding-left: 18px;
+}
+
+.small-input-error {
+  color: #e61b5a;
+  background: url(../../../assets/img/v2/icon/icon_message_error.png) 0 center
+    no-repeat;
+  -moz-background-size: 16px 16px;
+  -webkit-background-size: 16px 16px;
+  -o-background-size: 16px 16px;
+  background-size: 16px 16px;
+  font-size: 0.6rem;
+  white-space: nowrap;
+  padding-left: 18px;
+}
+
+@media screen and (max-width: 1410px) {
+  #receive-promotion-cb + label {
+    line-height: 1rem;
+  }
+}

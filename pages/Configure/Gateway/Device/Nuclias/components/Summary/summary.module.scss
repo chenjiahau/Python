@@ -1,0 +1,113 @@
+  .overview-container {
+    width: 100%;
+  
+    .icon-panel {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 16px 0;
+  
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+  
+        .round-icon {
+          width: 12px;
+          height: 12px;
+          border-radius: 2px;
+        }
+      }
+    }
+  
+    .port-panel {
+      padding: 24px;
+      overflow-x: auto;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: row;
+
+      .port-item {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        position: relative;
+        margin: 5px 5px 0px 5px;
+  
+        .number {
+          font-size: 0.6%;
+          width: 32px;
+          text-align: center;
+          white-space:nowrap;
+        }
+  
+        .port {
+          width: 34px;
+          height: 34px;
+        }
+  
+        .link-1gbps,
+        .link-100mbps,
+        .link-disconnected,
+        .link-disabled,
+        .link-error {
+          background-size: 34px 34px;
+          transform: rotate(180deg);
+          cursor: pointer;
+        }
+  
+        .link-1gbps {
+          background-image: url(/assets/img/v2/icon/icon_switch_port_down_1gbps.png);
+        }
+  
+        .link-100mbps {
+          background-image: url(/assets/img/v2/icon/icon_switch_port_down_10_100_mbps.png);
+        }
+  
+        .link-disconnected {
+          background-image: url(/assets/img/v2/icon/icon_switch_port_down_disconnected.png);
+        }
+  
+        .link-disabled {
+          background-image: url(/assets/img/v2/icon/icon_switch_port_down_disabled.png);
+        }
+  
+        .link-error {
+          background-image: url(/assets/img/v2/icon/icon_switch_port_down_error.png);
+        }
+
+        // .connection-bar-tooltip {
+        //   position: absolute;
+        //   top: -42px;
+        //   width: 220px;
+        //   height: 38px;
+        //   line-height: 1;
+        //   background: #636160;
+        //   padding: 2px 8px;
+      
+        //   &::after {
+        //     content: " ";
+        //     position: absolute;
+        //     left: 50%;
+        //     top: 38px;
+        //     width: 0;
+        //     height: 0;
+        //     border-left: 4px solid transparent;
+        //     border-right: 4px solid transparent;
+        //     border-top: 4px solid #636160;
+        //     clear: both;
+        //   }
+        // }
+
+      }
+
+    }
+  }
+  .chartContainer{
+    height: inherit;
+  }
+  .chartBox{
+    height: 180px;
+  }

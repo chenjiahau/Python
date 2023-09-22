@@ -1,0 +1,9 @@
+.btn-dropdown-download {
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-dropdown-download + ul {
+  min-width: auto;
+}

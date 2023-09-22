@@ -1,0 +1,92 @@
+.overview-container {
+  width: 100%;
+
+  .icon-panel {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 16px 0;
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      .icon {
+        width: 12px;
+        height: 12px;
+      }
+
+      .round-icon {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  .port-panel {
+    padding: 24px;
+    overflow-x: auto;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+
+    .port-item {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+
+      .number {
+        font-size: 0.6%;
+        width: 32px;
+        text-align: center;
+      }
+
+      .port {
+        width: 34px;
+        height: 34px;
+      }
+
+      .link-1gbps,
+      .link-100mbps,
+      .link-disconnected,
+      .link-disabled,
+      .link-error {
+        background-size: 34px 34px;
+        transform: rotate(180deg);
+        cursor: pointer;
+      }
+
+      .link-1gbps {
+        background-image: url(/assets/img/v2/icon/icon_switch_port_down_1gbps.png);
+      }
+
+      .link-100mbps {
+        background-image: url(/assets/img/v2/icon/icon_switch_port_down_10_100_mbps.png);
+      }
+
+      .link-disconnected {
+        background-image: url(/assets/img/v2/icon/icon_switch_port_down_disconnected.png);
+      }
+
+      .link-disabled {
+        background-image: url(/assets/img/v2/icon/icon_switch_port_down_disabled.png);
+      }
+
+      .link-error {
+        background-image: url(/assets/img/v2/icon/icon_switch_port_down_error.png);
+      }
+    }
+  }
+}
+
+.chartBox{
+    height: 180px;
+}
+.barAxisBox{
+    justify-content: space-between;
+}
+.barAxis{
+    width: 50px;
+}

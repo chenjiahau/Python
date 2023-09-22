@@ -1,0 +1,20 @@
+{
+  "SUCCESS_CODE_C_1000": "Successfully",
+  "SUCCESS_CODE_C_1001": "Saved successfully",
+  "SUCCESS_CODE_C_1002": "Imported successfully",
+  "SUCCESS_CODE_C_1003": "The new configuration is not applied to managed device yet. You need Push Configuration to apply the new configuration to managed device.",
+  "SUCCESS_CODE_C_1004": "Deleted successfully",
+  "SUCCESS_CODE_C_1005": "Resend successfully",
+  "SUCCESS_CODE_C_1006": "Apply successfully",
+  "SUCCESS_CODE_C_1007": "Choosing Enhanced Open will only allow client devices that support Wi-Fi Enhanced Open to connect to this SSID.",
+  "SUCCESS_CODE_C_1008": "This configuration will use up 2 SSIDs per enabled wireless band.",
+  "SUCCESS_CODE_C_1009": "Your support ticket has been submitted. Our Support Team will get back to you shortly.",
+  "SUCCESS_CODE_C_1010": "Successful verification.",
+  "SUCCESS_CODE_C_1011": "This MAC ACL server is still in use by another Profile, please remove the MAC ACL server from the profile and try again.",
+  "SUCCESS_CODE_C_1012": "This IP ACL server is still in use by another Profile, please remove the IP ACL server from the profile and try again.",
+  "SUCCESS_CODE_C_1013": "This localDB server is still in use by another Profile, please remove the localDB server from the profile and try again.",
+  "SUCCESS_CODE_C_1014": "The file is still being generating. You will receive an email once it's ready to download.",
+  "SUCCESS_CODE_C_1015": "This Profile configuration is not in sync with your associated devices. Please click Push configuration to override the saved changes to the associated devices.",
+  "SUCCESS_CODE_C_1016": "This device hasn’t applied all the saved changes. Please click Apply to override the configurations.",
+  "SUCCESS_CODE_C_1017": "Registered successfully"
+}

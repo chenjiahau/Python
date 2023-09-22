@@ -1,0 +1,21 @@
+.status-td {
+  width: 1px;
+  margin: 0;
+  padding: 0px 30px 0px 10px !important;
+}
+
+.more {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.more .more-info {
+  color: #172664;
+}
+
+.click-item {
+  &:hover {
+    cursor: pointer !important;
+  }
+}

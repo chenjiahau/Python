@@ -1,0 +1,19 @@
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 64px;
+
+  .field-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin-bottom: 12px;
+
+    .form-title {
+      width: auto;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
+}

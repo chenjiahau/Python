@@ -1,0 +1,147 @@
+.overview-digit-font {
+  font-size: 36px;
+}
+
+.table-box {
+  display: table;
+  width: 100%;
+  padding-right: 30px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltip-anchor {
+  min-width: 16px;
+}
+.tooltip-status {
+  margin: 6px 4px !important;
+  min-width: 8px;
+}
+.tooltip-title {
+  color: #1c307d;
+}
+
+.icon-device-online {
+  background: url(/assets/img/v2/icon/icon_selected.png) 0 center no-repeat;
+  background-size: cover;
+}
+
+.icon-device-offline {
+  background: url(/assets/img/v2/icon/icon_selected_red.png) 0 center no-repeat;
+  background-size: cover;
+}
+
+.icon-device-dormant {
+  background: url(/assets/img/v2/icon/icon_selected_gray.png) 0 center no-repeat;
+  background-size: cover;
+}
+
+.table {
+  & td {
+    white-space: nowrap;
+    padding-right: 30px;
+    min-width: 70px;
+  }
+  & .device-info-container {
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    & :global(.icon) {
+      margin-right: 2px;
+      margin-left: 0px !important;
+    }
+
+    & .device-count {
+      margin: 0 18px 0 2px;
+    }
+  }
+}
+
+.online-round {
+  width: 8px;
+  height: 8px;
+  border-radius: 99em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -1px;
+  margin-right: 5px;
+}
+
+.online-color {
+  background-color: #accc35;
+}
+
+.offline-color {
+  background-color: #e61b5a;
+}
+
+.dormant-color {
+  background-color: #c8c7cc;
+}
+
+.overview-digit-style-online {
+  color: #accc35 !important;
+  font-size: 36px;
+  margin-left: 25px;
+  text-decoration: underline;
+}
+
+.overview-digit-style-offline {
+  color: #e61b5a !important;
+  font-size: 36px;
+  margin-left: 25px;
+  text-decoration: underline;
+}
+
+.overview-digit-style-dormant {
+  color: #c8c7cc !important;
+  font-size: 36px;
+  margin-left: 25px;
+  text-decoration: underline;
+}
+
+.overview-digit-style-online:hover {
+  color: #e61b5a !important;
+  cursor: pointer;
+}
+
+.overview-digit-style-offline:hover {
+  cursor: pointer;
+}
+
+.overview-digit-style-dormant:hover {
+  color: #e61b5a !important;
+  cursor: pointer;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.overview-status {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-right: 100px;
+}
+
+.total-status {
+  margin-left: 20px;
+}
+
+.display-style {
+  display: flex;
+}
+
+.align-top {
+  vertical-align: "text-top";
+}
+
+.align-place-fpc {
+  margin-top: 20px;
+}

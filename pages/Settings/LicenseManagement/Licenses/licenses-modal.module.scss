@@ -1,0 +1,28 @@
+/* Add license */
+.add-licenses-modal .add-licenses-input-group {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  gap: .3rem;
+}
+
+.add-licenses-modal .add-licenses-input-group {
+  padding-bottom: 10px;
+}
+
+.add-licenses-modal .add-licenses-input-group > div{
+  margin-bottom: 0;
+}
+
+.add-licenses-modal .add-licenses-input-group > div:not(.icon){
+  width: calc(100% - 19px);
+}
+
+.add-licenses-modal .bulk-import-hint{
+  color: #797979;
+  font-size: .75rem;
+}
+
+.sub-content-container{
+  margin-left: 21px;
+}

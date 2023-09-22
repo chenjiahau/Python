@@ -1,0 +1,88 @@
+.basic-container {
+  .child-item {
+    border: 1px solid #c0c0c0;
+    border-bottom: none;
+    padding: 24px;
+
+    .detail {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      row-gap: 8px;
+      margin-bottom: 16px;
+
+      .block {
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .one-column-block,
+      .two-column-block {
+        display: grid;
+        align-items: center;
+      }
+
+      .two-column-block {
+        grid-template-columns: 200px 1fr;
+        column-gap: 16px;
+        align-items: center;
+      }
+    }
+
+    &:last-child {
+      border-bottom: 1px solid #c0c0c0;
+    }
+  }
+}
+
+.acl-container {
+  .acl-information-block {
+    border: 1px solid #c0c0c0;
+    padding: 24px;
+
+    .service-rule-table {
+      width: 250px;
+
+      .header {
+        padding: 8px 0;
+        border-bottom: 1px solid #c0c0c0;
+      }
+
+      .item {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        padding: 4px 0 6px 16px;
+        border-bottom: 1px solid #c0c0c0;
+      }
+    }
+  }
+}
+
+.access-policy-container,
+.igmp-snooping-container,
+.vlan-container {
+  .block {
+    border: 1px solid #c0c0c0;
+    padding: 12px 24px;
+
+    .item {
+      display: grid;
+      grid-template-columns: 200px 220px;
+    }
+  }
+}
+
+.vlan-container {
+  .tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .right {
+      display: flex;
+      gap: 8px;
+    }
+  }
+}

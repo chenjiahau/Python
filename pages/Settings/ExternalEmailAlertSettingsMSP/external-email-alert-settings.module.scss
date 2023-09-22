@@ -1,0 +1,94 @@
+.table-container-group {
+  margin-bottom: 20px;
+  &:after {
+    content: "";
+    display: table;
+    width: 100%;
+    clear: both;
+  }
+}
+
+.alert-settings-container {
+  .alert-title-container {
+    font-size: 0.875rem;
+    font-weight: bolder;
+    text-align: left;
+    color: #172664;
+    line-height: 28px;
+    height: 28px;
+    display: inline-block;
+    margin-right: 10px;
+    text-transform: uppercase;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 3px;
+      margin-bottom: 30px;
+      background-color: #22b7db;
+    }
+  }
+
+  .alert-table-container {
+    width: 100%;
+    & .alert-thead {
+      min-width: 50px;
+    }
+    & :global(.checkbox-input) {
+      input[type="checkbox"] + label,
+      input[type="checkbox"]:checked + label {
+        background-position: 30% center;
+      }
+    }
+  }
+
+  thead {
+    tr {
+      height: 28px;
+    }
+  }
+
+  tbody {
+    tr {
+      height: 34px;
+    }
+  }
+
+  .delay-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & :global(.dropdown-with-item-container) {
+      flex-grow: initial;
+      min-width: 45px;
+    }
+  }
+
+  .usage-container {
+    width: 410px;
+    display: flex;
+    align-items: center;
+
+    & :global(.normal-input-container) {
+      width: 72px;
+      margin: 0 2px 0 7px;
+    }
+  }
+
+  :global(.col-xl) {
+    margin-bottom: 20px;
+  }
+
+  :global(.card-body) {
+    height: 398px;
+    padding: 20px 0px 20px 20px;
+  }
+
+  .apply-btn-group {
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}

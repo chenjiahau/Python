@@ -1,0 +1,177 @@
+.dashboard-icon {
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+  background-size: 26px 26px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.dashboard-title {
+  line-height: 22px;
+  color: #172664;
+  font-weight: bolder;
+}
+
+.organization-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  margin-bottom: 32px;
+  cursor: default;
+
+  table,
+  tr,
+  td {
+    border: none;
+  }
+
+  th {
+    color: #172664;
+    padding-bottom: 16px;
+  }
+
+  tbody td {
+    padding: 8px 16px 8px 0;
+  }
+
+  td:nth-child(1) {
+    width: 20%;
+  }
+
+  td:nth-child(2) {
+    width: 20%;
+  }
+
+  td:nth-child(3) {
+    width: 40%;
+  }
+
+  td:nth-child(4) {
+    width: 20%;
+  }
+
+  .sitetag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-top: 32px;
+
+    .title {
+      color: #172664;
+      font-weight: bolder;
+      text-align: center;
+    }
+
+    .img {
+      width: 40%;
+      text-align: center;
+      object-fit: cover;
+    }
+
+    .img--custom {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+  }
+
+  .site {
+  }
+}
+
+.caregiver-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 48px;
+  row-gap: 32px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .account-card {
+    padding: 20px;
+    border: 1px solid #c0c0c0;
+    border-radius: 6%;
+    cursor: default;
+
+    .header {
+      display: grid;
+      grid-template-columns: 48px 1fr 48px;
+      border-bottom: 1px solid #c0c0c0;
+      padding-bottom: 8px;
+
+      img {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #c0c0c0;
+        background-color: #ffffff;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .self-icon {
+        display: flex;
+        align-items: center;
+      }
+
+      .self-title {
+        display: flex;
+        align-items: center;
+        color: #172664;
+        font-weight: bolder;
+      }
+
+      .link-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-left: 2px solid #c0c0c0;
+        cursor: pointer;
+        padding-left: 8px;
+
+        img {
+          border: none;
+          border-radius: 0;
+        }
+      }
+    }
+
+    .content {
+      .item {
+        margin: 16px 0;
+
+        .title {
+        }
+
+        .value {
+          ul,
+          li {
+            padding: 0;
+          }
+
+          li {
+            margin-left: 18px;
+          }
+          font-weight: bolder;
+        }
+
+        .more-site {
+          text-align: right;
+          cursor: pointer;
+
+          &:hover {
+            color: #f00f00;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-title {
+  font-weight: bold;
+  color: #172664;
+  font-size: 18px;
+}

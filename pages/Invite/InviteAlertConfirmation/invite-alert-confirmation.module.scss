@@ -1,0 +1,26 @@
+.invite-alert-confirmation-container{
+  .term_privacy_checkbox_label{
+    padding-right: 0 !important;
+  }
+  .term-privacy-container{
+    span{
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #5c5c5c;
+    }
+
+    &.disabled{
+      * {
+        color: #cccccc !important;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .btn-confirm{
+    width: 100%;
+  }
+}

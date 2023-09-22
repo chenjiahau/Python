@@ -1,0 +1,9 @@
+.inline-bottom-group{
+  display: flex;
+  justify-content: space-between;
+  & > div {
+    display: inherit;
+    align-items: center;
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,180 @@
+.preview-block {
+  display: grid;
+  grid-template-columns: 30% minmax(33%, 38%) 1fr;
+  column-gap: 12px;
+
+  .operation {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+
+    .panel {
+      display: flex;
+      gap: 1px;
+    }
+
+    .desktop-icon {
+      display: inline-block;
+      width: 53px;
+      height: 29px;
+      background: #d0d7e0
+        url("/assets/img/v2/splash_page/iconDesktopsPurple.svg") center center;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      vertical-align: middle;
+      cursor: pointer;
+      border-radius: 3px 0 0 3px;
+
+      &:hover {
+        background: #22b7db
+          url("/assets/img/v2/splash_page/iconDesktopsWhite.svg") center center;
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+      }
+    }
+
+    .tablet-icon {
+      display: inline-block;
+      width: 53px;
+      height: 29px;
+      background: #d0d7e0
+        url("/assets/img/v2/splash_page/iconTabletsPurple.svg") center center;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      vertical-align: middle;
+      cursor: pointer;
+
+      &:hover {
+        background: #22b7db
+          url("/assets/img/v2/splash_page/iconTabletsWhite.svg") center center;
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+      }
+    }
+
+    .phone-icon {
+      display: inline-block;
+      width: 53px;
+      height: 29px;
+      background: #d0d7e0 url("/assets/img/v2/splash_page/iconPhonesPurple.svg")
+        center center;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      vertical-align: middle;
+      cursor: pointer;
+      border-radius: 0 3px 3px 0;
+
+      &:hover {
+        background: #22b7db
+          url("/assets/img/v2/splash_page/iconPhonesWhite.svg") center center;
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+      }
+    }
+
+    .selected-desktop-icon {
+      display: inline-block;
+      width: 53px;
+      height: 29px;
+      background: #22b7db
+        url("/assets/img/v2/splash_page/iconDesktopsWhite.svg") center center;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      vertical-align: middle;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .selected-tablet-icon {
+      display: inline-block;
+      width: 53px;
+      height: 29px;
+      background: #22b7db url("/assets/img/v2/splash_page/iconTabletsWhite.svg")
+        center center;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      vertical-align: middle;
+    }
+
+    .selected-phone-icon {
+      display: inline-block;
+      width: 53px;
+      height: 29px;
+      background: #22b7db url("/assets/img/v2/splash_page/iconPhonesWhite.svg")
+        center center;
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      vertical-align: middle;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .preview-mode {
+      width: 80px;
+      height: 29px;
+      background-color: #d0d7e0;
+      cursor: pointer;
+      border: none;
+      border-radius: 3px 0 0 3px;
+      color: #172664;
+      line-height: 29px;
+      text-align: center;
+
+      &:hover {
+        background-color: #22b7db;
+      }
+    }
+
+    .edit-mode {
+      width: 80px;
+      height: 29px;
+      background-color: #d0d7e0;
+      cursor: pointer;
+      border: none;
+      border-radius: 0 3px 3px 0;
+      color: #172664;
+      line-height: 29px;
+      text-align: center;
+
+      &:hover {
+        background-color: #22b7db;
+      }
+    }
+
+    .selected-preview-mode {
+      width: 80px;
+      height: 29px;
+      background-color: #22b7db;
+      cursor: pointer;
+      border: none;
+      border-radius: 3px 0 0 3px;
+      color: #ffffff;
+      line-height: 29px;
+      text-align: center;
+    }
+
+    .selected-edit-mode {
+      width: 80px;
+      height: 29px;
+      background-color: #22b7db;
+      cursor: pointer;
+      border: none;
+      border-radius: 0 3px 3px 0;
+      color: #ffffff;
+      line-height: 29px;
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .operation {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      margin: 16px 0;
+    }
+  }
+}

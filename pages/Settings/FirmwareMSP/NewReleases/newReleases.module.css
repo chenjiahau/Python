@@ -1,0 +1,97 @@
+.top-fw-card {
+  height: 640px;
+}
+
+.fw-Card {
+  border-radius: 0px;
+}
+
+.fw-middle-card {
+  border-radius: 0px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.fw-card-title {
+  font-size: 15px;
+  font-weight: bolder;
+  color: #172664;
+  display: inline-block;
+  padding-bottom: initial;
+  margin-bottom: 0px;
+}
+
+.fw-card-body {
+  margin-top: -25px;
+}
+
+.table-fixed tbody {
+  height: 450px;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 100%;
+  font-size: 0.75rem !important;
+  display: block;
+}
+
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+  display: block;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.table-fixed tbody td,
+.table-fixed tbody th,
+.table-fixed thead > tr > th {
+  float: left;
+  display: block;
+  position: relative;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table-index {
+  margin-right: -50px;
+}
+
+.table-thead {
+  padding-left: inherit;
+}
+
+.table-fixed img {
+  vertical-align: inherit;
+  margin-left: 5px;
+}
+
+.tableImg-fixed {
+  margin-left: 5px;
+}
+
+.table-fixed img:hover {
+  opacity: 0.5;
+}
+
+.table-fixed a:hover {
+  color: red;
+}
+
+.release-note-content {
+  height: 293px;
+  overflow-y: scroll;
+}
+
+.release-link {
+  font-weight: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .fwMiddleCard {
+    border-radius: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}

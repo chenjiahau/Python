@@ -1,0 +1,81 @@
+.dropdown-site-container {
+  position: relative;
+  min-width: 150px;
+
+  .btn-dropdown {
+    width: 100%;
+
+    &.isInvalid {
+      border: 1px solid #d73200;
+    }
+
+    & + ul {
+      min-width: 350px;
+
+      .main-content {
+        padding: 5px 0px;
+
+        li:hover {
+          background-color: #ffffff;
+        }
+      }
+
+      li {
+        padding: 2px 10px;
+      }
+    }
+
+    .dropdown-button-others {
+      height: 8px;
+    }
+  }
+
+  .radio-input {
+    width: 100%;
+  }
+
+  &:hover {
+    .radio-input,
+    .radio-input input,
+    .radio-input label {
+      background-color: transparent !important;
+    }
+
+    .input-container {
+      margin: 0px;
+      .icon {
+        width: 17px;
+      }
+    }
+  }
+
+  .dropdown-menu.show {
+    display: inline-flex;
+
+    .sub-content {
+      border-left: 1px solid rgba(0, 0, 0, 0.175);
+
+      ul {
+        padding: 0px;
+        border-top: 1px solid rgba(0, 0, 0, 0.175);
+
+        li {
+          height: 28px;
+        }
+      }
+    }
+  }
+
+  .search-input {
+    background: #ffffff url(../../../../assets/img/v2/icon/icon_search.png) 10px center no-repeat;
+    padding: 0px 0px 0px 30px;
+    background-size: 14px 14px;
+    height: 28px;
+  }
+
+  .search-input:focus {
+    border-radius: 3px;
+    border: solid 1px #22b7db !important;
+    outline: none !important;
+  }
+}

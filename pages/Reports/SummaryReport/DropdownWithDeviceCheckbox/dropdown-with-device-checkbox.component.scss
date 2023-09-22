@@ -1,0 +1,75 @@
+.dropdown-with-device-checkbox-container {
+  .btn-dropdown + ul li {
+    padding: 4px 0 4px 2px;
+    white-space: nowrap;
+  }
+}
+
+.dropdown-with-device-checkbox-container .dropdown-menu {
+  width: 920px;
+  padding: 10px;
+}
+
+.dropdown-with-device-checkbox-container .dropdown-menu > li {
+  float: right;
+  margin-bottom: 8px;
+  padding: 5px;
+}
+
+.dropdown-with-device-checkbox-container .dropdown-hr {
+  width: 100%;
+  margin: 5px 0;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+  opacity: initial;
+}
+
+.dropdown-with-device-checkbox-container .device-content {
+  display: inline-flex;
+}
+
+.dropdown-with-device-checkbox-container .device-info-title {
+  color: #172664;
+  cursor: auto !important;
+  padding: 4px 12px !important;
+
+  &:hover {
+    color: #172664 !important;
+    background-color: #ffffff !important;
+  }
+}
+
+.dropdown-with-device-checkbox-container .btn-dropdown + ul li:not(.active):hover {
+  color: #172664 !important;
+}
+
+.dropdown-with-device-checkbox-container .checkbox-input {
+  width: 100%;
+}
+
+@media screen and (max-width: 1401px) {
+  .dropdown-with-device-checkbox-container .dropdown-menu {
+    width: auto;
+  }
+
+  .dropdown-with-device-checkbox-container .device-content {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .dropdown-with-device-checkbox-container .device-content > ul {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .dropdown-with-device-checkbox-container .dropdown-menu {
+    left: -275px;
+  }
+}
+
+@media screen and (max-width: 579px) {
+  .dropdown-with-device-checkbox-container .dropdown-menu {
+    left: 0;
+  }
+}

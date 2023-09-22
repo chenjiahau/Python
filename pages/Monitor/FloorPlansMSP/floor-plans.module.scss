@@ -1,0 +1,220 @@
+.add-btn {
+  margin: 0 0 8px;
+}
+.modal-col-title {
+  width: 50px;
+}
+.right-menu {
+  width: 20%;
+  float: left;
+  padding: 38px 10px 0 0;
+  position: relative;
+}
+.left-image {
+  width: 80%;
+  float: left;
+}
+@media screen and (max-width: 768px) {
+  .right-menu,
+  .left-image {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin-top: 20px;
+  }
+}
+.icon-arrow {
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  margin: 12px;
+  right: 3px;
+  position: absolute;
+}
+.colbox-title {
+  height: 44px;
+  line-height: 44px;
+  background-color: #eaeef4;
+  border: 1px solid #cccccc;
+  padding: 0px 10px;
+  cursor: pointer;
+  margin-top: -1px;
+}
+.colbox-devicelist {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 0 0 0 10px;
+  margin-top: -1px;
+  position: relative;
+  height: 35px;
+  line-height: 35px;
+  background-size: 26px 26px;
+  cursor: pointer;
+}
+.colbox-status {
+  margin: 13px 0px !important;
+}
+.icon-devicelist {
+  right: 0px;
+  margin: 8px 5px !important;
+  position: absolute;
+}
+.icon-drug {
+  background: url(../../../assets/img/v2/icon/icon_drag.png) 0 center no-repeat;
+  background-size: cover;
+}
+.floor-plan-box {
+  width: 100%;
+  border: 1px solid #cccccc;
+  float: left;
+  overflow: auto;
+  position: relative;
+  margin-bottom: 20px;
+}
+.floor-plan-container {
+  position: relative;
+  overflow: auto;
+  height: 100%;
+  min-height: 350px;
+}
+.apply-btn-group {
+  text-align: center;
+}
+
+// img{
+//     pointer-events: none;
+// }
+.draggable-container {
+  z-index: 1;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+}
+.draggable-point {
+  cursor: all-scroll;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 99em;
+  vertical-align: middle;
+  background-color: #afcb20;
+  margin: auto;
+}
+/*top*/
+.tip-top,
+.tip {
+  padding: 2px 16px;
+  background-color: #5c5c5c;
+  color: #ffffff;
+  display: inline-block;
+  opacity: 0.8;
+  white-space: nowrap;
+  position: relative;
+  border-radius: 4px;
+  text-align: center;
+  transform: translateX(-50%);
+  left: 50% !important;
+  top: -4em;
+}
+
+.tip-top::after,
+.tip::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 8px solid #5c5c5c;
+  border-bottom: 0px solid transparent;
+  border-right: 8px solid transparent;
+  border-left: 6px solid transparent;
+  display: inline-block;
+}
+
+/*right*/
+.tip-right {
+  padding: 2px 16px;
+  background-color: #5c5c5c;
+  color: #ffffff;
+  display: inline-block;
+  opacity: 0.8;
+  white-space: nowrap;
+  position: relative;
+  border-radius: 4px;
+  transform: translateY(-110%);
+  text-align: left;
+  top: 5px;
+  left: 28px !important;
+}
+
+.tip-right::after {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  left: -8px;
+  transform: translateY(50%);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid #5c5c5c;
+  border-left: 0px solid transparent;
+  display: inline-block;
+}
+
+/*bottom*/
+.tip-bottom {
+  padding: 2px 16px;
+  background-color: #5c5c5c;
+  color: #ffffff;
+  display: inline-block;
+  opacity: 0.8;
+  white-space: nowrap;
+  position: relative;
+  bottom: -8px;
+  border-radius: 4px;
+  margin-left: auto;
+  text-align: center;
+  transform: translateX(-50%);
+  left: 50% !important;
+}
+
+.tip-bottom::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom: 8px solid #5c5c5c;
+  border-top: 0px solid transparent;
+  border-right: 8px solid transparent;
+  border-left: 6px solid transparent;
+  display: inline-block;
+}
+
+/*left*/
+.tip-left {
+  padding: 2px 16px;
+  background-color: #5c5c5c;
+  color: #ffffff;
+  display: inline-block;
+  opacity: 0.8;
+  white-space: nowrap;
+  position: absolute;
+  border-radius: 4px;
+  transform: translateY(-20%);
+  text-align: right;
+  top: 0;
+  right: 28px !important;
+}
+
+.tip-left::after {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  right: -8px;
+  transform: translateY(50%);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid #5c5c5c;
+  border-right: 0px solid transparent;
+  display: inline-block;
+}

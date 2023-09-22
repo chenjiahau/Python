@@ -1,0 +1,84 @@
+.expiration-container {
+  display: flex;
+  line-height: 1.2;
+  height: 90px;
+  font-size: 0.75rem;
+}
+
+.expiration-r {
+  padding: 20px 80px;
+  border: 1px solid #cccccc;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.expiration-r * {
+  font-size: 1.375rem !important;
+}
+
+.expiration-l {
+  padding: 20px 60px;
+  border: 1px solid #cccccc;
+  margin-left: -1px;
+  display: flex;
+  align-items: center;
+  font-size: 1.375rem !important;
+}
+
+.license-status-container tr > *:nth-child(1){
+  padding: 0 25px 0 15px;
+}
+
+.license-status-container th,
+.license-status-container td {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e6e6;
+  color: #5c5c5c !important;
+  height: 34px;
+  line-height: 34px;
+  padding: 5px 30px 5px 10px;
+  font-weight: normal;
+  font-size: 0.75rem;
+}
+
+.co-term-button-group-container{
+  display: inline-flex;
+  gap: 12px;
+  margin: 5px 0;
+}
+
+.remain-date-container{
+  height: 0;
+  transition: height .5s;
+  margin-top: 10px;
+  overflow-y: hidden;
+}
+
+.remain-date-container.show{
+  height: 182px;
+}
+
+.remain-date-container > div{
+  line-height: 1.8;
+  border: 4px dashed #eaeaea;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.remain-date-container div{
+  font-size: 1.375rem;
+}
+
+.projected-date{
+  font-size: 0.9375rem;
+  font-weight: bold;
+  margin: 20px auto;
+}
+
+.projected-date span{
+  color: #000;
+}

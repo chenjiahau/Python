@@ -1,0 +1,160 @@
+.top-overview-container {
+  min-height: 90px;
+  box-shadow: 0 6px 6px -4px rgb(0 0 0 / 10%);
+  padding: 20px 0px;
+  font-size: 0.75rem;
+  color: #5c5c5c !important;
+  margin: 20px 0px 10px 0px;
+}
+
+.number-container .inline-title {
+  height: auto !important;
+}
+
+.overview-device-status-container,
+.overview-device-type-container {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  margin: 20px auto;
+  box-sizing: border-box;
+  gap: 10px;
+}
+
+.overview-vertical-line {
+  display: flex;
+  width: 1px;
+  height: 75px;
+  border-right: 1px dashed #95a4b7;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0;
+  align-self: center;
+}
+
+.overview-horizontal-line {
+  display: inline-block;
+  height: 2px;
+  background-color: #d8d8d8;
+  width: 4%;
+  align-self: center;
+  margin-right: 5px;
+}
+
+.sub-status-container {
+  display: flex;
+  flex-direction: row;
+  min-width: 78px;
+}
+
+.number-container {
+  text-align: center;
+}
+
+.number-context span {
+  margin-left: 5px;
+}
+
+.number-icon {
+  margin: 0px 5px 0px 5px !important;
+}
+
+.number-count {
+  text-decoration: none !important;
+  font-size: 40px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.number-online {
+  color: #afcb20 !important;
+}
+
+.number-offline {
+  color: #e6185a !important;
+}
+
+.number-warning {
+  color: #f59d24 !important;
+}
+
+.number-dormant {
+  color: #c8c7cc !important;
+}
+
+.number-count:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(1);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.number-online:after {
+  background-color: #afcb20;
+}
+
+.number-offline:after {
+  background-color: #e6185a;
+}
+
+.number-warning:after {
+  background-color: #f59d24;
+}
+
+.number-dormant:after {
+  background-color: #c8c7cc;
+}
+
+.sub-status-container:hover .number-count {
+  transform: scale(1.3);
+}
+
+.sub-status-container:hover .number-count:after {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+@media screen and (max-width: 1100px) {
+  .overview-device-status-container > div,
+  .overview-device-type-container > div {
+    margin: 0 auto;
+  }
+
+  .container-swap {
+    //padding-bottom: 30px;
+    //border-bottom: 1px dashed #95a4b7;
+  }
+
+  .overview-device-status-container {
+    width: calc(100% - 40px);
+  }
+
+  .overview-device-type-container {
+    width: calc(100% - 40px);
+  }
+
+  .overview-vertical-line {
+    height: 30px;
+    width: calc(100% - 40px);
+    border-bottom: 1px dashed #95a4b7;
+    border-right: none;
+  }
+}
+
+.align-place-header {
+  display: flex;
+  align-items: center;
+  padding: 6px 0 6px 0 !important;
+}
+
+.align-place-fpc {
+  margin-top: 20px;
+}

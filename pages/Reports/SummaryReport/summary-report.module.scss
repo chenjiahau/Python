@@ -1,0 +1,61 @@
+.time-frame-title {
+  font-size: 20px;
+}
+
+.time-frame-title > .data-show {
+  color: #22b7db;
+}
+
+.tool-content {
+  display: inline-block;
+  width: 170px;
+}
+
+.tool-content-timeframe {
+  width: auto;
+}
+
+.tool-content .form-title {
+  line-height: 28px;
+}
+
+.email-modal-font-size {
+  font-size: 12px !important;
+}
+
+.report-title {
+  color: #172664;
+}
+
+.white-table {
+  width: 100%;
+  box-shadow: 0 0 0 1px #e6e6e6;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.white-table table {
+  margin: -1px 0;
+}
+
+.white-table th,
+.white-table td {
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.white-table th {
+  color: #a6a6a6 !important;
+}
+
+.white-table td {
+  color: #212529;
+}
+
+.show-tables-info {
+  display: block;
+}
+
+.hide-tables-info {
+  display: none;
+}

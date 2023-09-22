@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+}
+
+.left-box {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  margin-right: 10px;
+  width: 20%;
+  min-width: 210px;
+  min-height: 1200px;
+}
+
+.right-box {
+  width: 80%;
+  border: 1px solid #cccccc;
+  overflow: auto;
+  position: relative;
+  padding: 50px;
+}
+
+.right-box-title {
+  padding: 0;
+  line-height: 1.2;
+  font-size: 36px;
+  color: #172664;
+  font-weight: 100;
+  text-transform: none;
+}

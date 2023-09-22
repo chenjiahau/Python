@@ -1,0 +1,60 @@
+.field {
+  min-width: auto;
+  margin-right: 20px;
+}
+
+a.link {
+  color: #22b7db;
+  text-decoration: underline;
+}
+
+.table-tip-left-td {
+  width: 200px;
+  text-align: right;
+}
+
+// Captive Portal
+.user-authentication-right {
+  display: flex;
+  flex-wrap: wrap;
+
+  .dropdown-button {
+    margin-left: 16px;
+  }
+
+  .goto-splash-page-editor {
+    flex-grow: 0;
+    margin-left: 8px;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .dropdown-button {
+      margin-left: 22px;
+    }
+  }
+}
+
+// Schedule policy
+.schedule-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-top-title {
+  color: #172664;
+}
+
+.schedule-top-left,
+.schedule-top-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.schedule-top-right {
+  justify-content: flex-end;
+}
+
+.schedule-body {
+}

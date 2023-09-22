@@ -1,0 +1,29 @@
+.tab-and-lang-block {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  position: relative;
+
+  .multiple-languages-block {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top: 16px;
+
+    .btn {
+      height: 30px;
+      border: none;
+      background-color: transparent;
+      padding: 0 32px;
+
+      &:hover {
+        border-radius: 3px 3px 0 0;
+        border: 1px solid #c0c0c0;
+        border-bottom: 0;
+        background-color: #eeeeee;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+  }
+}

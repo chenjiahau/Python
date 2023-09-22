@@ -1,0 +1,243 @@
+.handle-tag-container {
+  padding: 8px 16px;
+
+  .block {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    column-gap: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.device-list-dropdown {
+  width: 260px;
+
+  button {
+    width: 100%;
+  }
+}
+
+.tools-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  button {
+    padding: 0 16px;
+  }
+
+  .left,
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    .ports-text {
+      display: flex;
+      align-items: center;
+      margin-left: 8px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .right {
+      width: 100%;
+      text-align: right;
+    }
+  }
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #22b7db;
+  }
+
+  #{&}-detail {
+    text-decoration: underline;
+    display: none;
+    margin-left: 8px;
+
+    &:hover {
+      color: #22b7db;
+    }
+  }
+}
+
+// For edit port modal
+.port-mac-address-field {
+  max-height: 110px;
+  overflow: auto;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+
+  .item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 8px 8px;
+    font-size: 12px;
+    border-bottom: 1px solid #c0c0c0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.link {
+  font-size: 10px;
+  text-decoration: underline !important;
+}
+
+.tag-field {
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+
+  input {
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: default;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: none;
+      border: none;
+    }
+  }
+
+  .menu {
+    padding: 8px;
+    background: #eeeeee;
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+
+    div {
+      display: block;
+      padding: 0;
+    }
+
+    .add-link {
+      color: #22b7db;
+      cursor: pointer;
+
+      &:hover {
+        color: #1c307d;
+      }
+    }
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+
+    .tag {
+      border: 1px solid #22b7db;
+      width: auto;
+      font-size: 10px;
+      color: #22b7db;
+      border-radius: 4px;
+      margin: 0 8px 8px 0;
+
+      .left,
+      .right {
+        display: inline-block;
+        font-size: 10px;
+        color: #22b7db;
+        padding: 0 8px;
+      }
+
+      .left {
+        border-right: 1px solid #22b7db;
+      }
+
+      .right {
+        cursor: pointer;
+
+        &:hover {
+          background: #22b7db;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+// For modal
+.edit-modal-body,
+.aggregate-port-modal-body,
+.mirror-port-modal-body {
+  display: flex;
+  flex-direction: column;
+
+  .form-title {
+    min-width: 170px;
+  }
+
+  .port {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #555555;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  .hint {
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 10px;
+    background: #eeeeee;
+  }
+
+  .member-port-block,
+  .source-port-block,
+  .existing-port-block,
+  .destination-port-block {
+    display: grid;
+    grid-template-columns: 5% 30% auto;
+    margin-bottom: 4px;
+
+    .item {
+      display: flex;
+      align-items: center;
+    }
+
+    .port {
+      width: 6px;
+      height: 6px;
+      background: #555555;
+      border-radius: 50%;
+    }
+
+    .port-white {
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+  }
+
+  .action-block {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+
+    button {
+      flex-grow: 0;
+    }
+  }
+}

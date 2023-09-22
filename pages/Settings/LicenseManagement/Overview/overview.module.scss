@@ -1,0 +1,108 @@
+.top-overview-container {
+  min-height: 100px;
+  box-shadow: 0 6px 6px -4px rgb(0 0 0 / 10%);
+  padding: 20px 0 30px 0;
+  font-size: 0.75rem;
+  color: #5c5c5c !important;
+}
+
+.bottom-overview-container .bottom-sub-container{
+  margin-top: 40px;
+}
+
+.devices-status-container,
+.licenses-status-container{
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  margin: 20px auto;
+  box-sizing: border-box;
+  gap: 10px;
+}
+
+.sub-status-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.devices-v-line-container{
+  display: flex;
+  width: 1px;
+  height: 75px;
+  border-right: 1px dashed #95a4b7;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0;
+  align-self: center;
+}
+
+.number-container{
+  text-align: center;
+}
+
+.number-count{
+  text-decoration: none !important;
+  color: #22b7db !important;
+  font-size: 32px;
+  display: inline-block;
+  font-weight: bold;
+  position: relative;
+  margin-top: 10px;
+  transition: transform .3s ease-in-out;
+}
+
+.number-count::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(1);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #22b7db;
+  transform-origin: bottom left;
+  transition: transform .3s ease-in-out;
+}
+
+.sub-status-container:hover .number-count {
+  transform: scale(1.3);
+}
+.sub-status-container:hover .number-count::after {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.overview-table-container{
+  background: #ffffff !important;
+  border-bottom: 1px solid #e6e6e6;
+  color: #5c5c5c !important;
+  height: 34px;
+  line-height: 34px;
+  padding: 5px 30px 5px 10px;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 1300px) {
+  .top-overview-container > div,
+  .bottom-overview-container > div {
+    margin: 0 auto;
+  }
+
+  .devices-status-container{
+    border-bottom: 1px dashed #95a4b7;
+    padding-bottom: 30px;
+  }
+
+  .devices-v-line-container{
+    display: none;
+  }
+
+  .bottom-overview-container .col-xl-6{
+    width: 100%;
+  }
+
+  .bottom-sub-container{
+    padding: 0;
+  }
+}

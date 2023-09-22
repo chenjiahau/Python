@@ -1,0 +1,12 @@
+.row {
+  margin: 0;
+}
+
+.block {
+  margin-bottom: 32px;
+  padding: 0 16px 0 0;
+
+  &:last-child {
+    padding: 0;
+  }
+}

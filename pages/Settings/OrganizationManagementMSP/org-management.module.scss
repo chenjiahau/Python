@@ -1,0 +1,82 @@
+.site-table-tooltips-container{
+  & td {
+    white-space: nowrap;
+    padding-right: 30px;
+    min-width: 70px;
+  }
+  & .device-info-container {
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    & :global(.icon) {
+      margin-right: 2px;
+      margin-left: 0px !important;
+    }
+
+    & .device-count{
+      margin: 0 18px 0 2px;
+    }
+  }
+}
+
+.org-tree-msp{
+  & .tree-view-container{
+    margin-top: 20px;
+    margin-left: 40px;
+    & .org-node-container{
+      display: flex;
+      align-items: center;
+      & a{
+        color: #5c5c5c;
+      }
+    }
+
+    & .child-node-container{
+      margin-left: 15px;
+      padding-top: 20px;
+
+      & .node{
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+
+        & .tree-up-line {
+          width: 42px;
+          height: 20px;
+          background: url(../../../assets/img/v2/orgtree_1px.png) 0 center repeat-y;
+        }
+
+        & .tree-down-line {
+          width: 42px;
+          height: 26px;
+          background: url(../../../assets/img/v2/orgtree_done.png) no-repeat;
+        }
+
+        & .icon-tag-site {
+          width: 18px;
+          height: 18px;
+        }
+
+      }
+
+      & .child-node-container{
+        margin-left: 55px;
+
+        &+.child-node-container{
+          margin-top: -7px;
+          padding-top: 0px;
+          & .tree-up-line {
+            height: 35px;
+          }
+        }
+      }
+
+    }
+  }
+
+  & .toolbar-box-container{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+}
