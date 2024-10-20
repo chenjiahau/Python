@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'filebrowser',
-        'USER': 'filebrowser',
-        'PASSWORD': 'filebrowser',
-        'HOST': 'filebrowser-db',
+        'NAME': 'todo',
+        'USER': 'todo',
+        'PASSWORD': 'todo',
+        'HOST': 'todo-db',
         'PORT': '5432',
     }
 }

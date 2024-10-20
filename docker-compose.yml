@@ -3,18 +3,18 @@ services:
     build:
       context: ./db
       dockerfile: Dockerfile
-    container_name: filebrowser-db
+    container_name: todo-db
     environment:
-      POSTGRES_DB: filebrowser
-      POSTGRES_USER: filebrowser
-      POSTGRES_PASSWORD: filebrowser
+      POSTGRES_DB: todo
+      POSTGRES_USER: todo
+      POSTGRES_PASSWORD: todo
     ports:
       - "5432:5432"
     restart: always
   backend:
     build:
       context: ./backend
-    container_name: filebrowser-backend
+    container_name: todo-backend
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./backend:/app
@@ -23,10 +23,10 @@ services:
     depends_on:
       - db
     environment:
-      - DB_HOST=filebrowser-db
-      - DB_NAME=filebrowser
-      - DB_USER=filebrowser
-      - DB_PASS=filebrowser
+      - DB_HOST=todo-db
+      - DB_NAME=todo
+      - DB_USER=todo
+      - DB_PASS=todo
     restart: always
 
 volumes:
