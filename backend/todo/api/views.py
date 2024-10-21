@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from todo.models import Task
 from todo.api.serializers import TaskSerializer
+from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_204_NO_CONTENT
 
 @api_view(['GET', 'POST'])
 def index(request):
@@ -12,7 +13,7 @@ def index(request):
             serializer.save()
             return Response(serializer.data)
 
-        return Response(serializer.errors, status=400)
+        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
     tasks = Task.objects.all()
     serializer = TaskSerializer(tasks, many=True)
@@ -24,7 +25,7 @@ def task_detail(request, pk):
     try:
         task = Task.objects.get(pk=pk)
     except Task.DoesNotExist:
-        return Response(status=404)
+        return Response(status=HTTP_400_BAD_REQUEST)
 
     if request.method == 'GET':
         serializer = TaskSerializer(task)
@@ -37,8 +38,8 @@ def task_detail(request, pk):
             serializer.save()
             return Response(serializer.data)
 
-        return Response(serializer.errors, status=400)
+        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         task.delete()
-        return Response(status=204)
+        return Response(status=HTTP_204_NO_CONTENT)
