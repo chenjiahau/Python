@@ -53,3 +53,9 @@ class TaskSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Started at must be in the future')
 
         return value
+
+    def validate(self, data):
+        if data['completed'] and not data['enabled']:
+            raise serializers.ValidationError('Task cannot be completed if it is not enabled')
+
+        return data
