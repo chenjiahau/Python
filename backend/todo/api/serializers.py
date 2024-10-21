@@ -35,3 +35,21 @@ class TaskSerializer(serializers.ModelSerializer):
 
         # id field is read-only, so it is not included in the fields list
         # fields = '__all__' can be used to include all fields
+
+    def validate_title(self, value):
+        if len(value) < 3:
+            raise serializers.ValidationError('Title must be at least 3 characters long')
+
+        return value
+
+    def validate_level(self, value):
+        if value < 1 or value > 5:
+            raise serializers.ValidationError('Level must be between 1 and 5')
+
+        return value
+
+    def validate_started_at(self, value):
+        if value < timezone.now():
+            raise serializers.ValidationError('Started at must be in the future')
+
+        return value
