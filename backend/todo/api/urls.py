@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from todo.api.views import TaskList, TaskDetail
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('<uuid:pk>/', views.task_detail, name='task_detail'),
+    path('', TaskList.as_view(), name='index'),
+    path('<uuid:pk>/', TaskDetail.as_view(), name='task_detail'),
 ]
