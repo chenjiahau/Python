@@ -2,13 +2,32 @@ from rest_framework import serializers
 from todo.models import Task
 from django.utils import timezone
 
+# Custom validators
+def title_length(value):
+    if len(value) < 3:
+        raise serializers.ValidationError('Title must be at least 3 characters long')
+
+    return value
+
+def level_range(value):
+    if value < 1 or value > 5:
+        raise serializers.ValidationError('Level must be between 1 and 5')
+
+    return value
+
+def started_at_future(value):
+    if value < timezone.now():
+        raise serializers.ValidationError('Started at must be in the future')
+
+    return value
+
 class TaskSerializer(serializers.ModelSerializer):
     # Define the fields that should be serialized
     # If default values are not provided, the fields are required
     id = serializers.UUIDField(format='hex_verbose', read_only=True)
-    title = serializers.CharField()
-    level = serializers.IntegerField()
-    started_at = serializers.DateTimeField()
+    title = serializers.CharField(validators=[title_length])
+    level = serializers.IntegerField(validators=[level_range])
+    started_at = serializers.DateTimeField(validators=[started_at_future])
     enabled = serializers.BooleanField(default=True)
     completed = serializers.BooleanField(default=False)
 
@@ -36,23 +55,23 @@ class TaskSerializer(serializers.ModelSerializer):
         # id field is read-only, so it is not included in the fields list
         # fields = '__all__' can be used to include all fields
 
-    def validate_title(self, value):
-        if len(value) < 3:
-            raise serializers.ValidationError('Title must be at least 3 characters long')
+    # def validate_title(self, value):
+    #     if len(value) < 3:
+    #         raise serializers.ValidationError('Title must be at least 3 characters long')
 
-        return value
+    #     return value
 
-    def validate_level(self, value):
-        if value < 1 or value > 5:
-            raise serializers.ValidationError('Level must be between 1 and 5')
+    # def validate_level(self, value):
+    #     if value < 1 or value > 5:
+    #         raise serializers.ValidationError('Level must be between 1 and 5')
 
-        return value
+    #     return value
 
-    def validate_started_at(self, value):
-        if value < timezone.now():
-            raise serializers.ValidationError('Started at must be in the future')
+    # def validate_started_at(self, value):
+    #     if value < timezone.now():
+    #         raise serializers.ValidationError('Started at must be in the future')
 
-        return value
+    #     return value
 
     def validate(self, data):
         if data['completed'] and not data['enabled']:
