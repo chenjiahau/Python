@@ -1,7 +1,9 @@
 from rest_framework import (
+    status,
     generics,
     authentication,
     permissions,)
+from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from user.serializers import (
     UserSerializer,
@@ -15,6 +17,15 @@ class UserCreateView(generics.CreateAPIView):
 
 class UserCreateTokenView(ObtainAuthToken):
     serializer_class = AuthTokenSerializer
+
+
+class UserTokenRevokeView(generics.GenericAPIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)
 
 
 class UserProfileView(generics.RetrieveUpdateAPIView):
