@@ -4,10 +4,12 @@ from rest_framework import (
     generics,)
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 from user.serializers import (UserSerializer, AuthTokenSerializer,)
+from core.authentication import RequireTokenAuthentication
 from core.models import (CustomToken, User)
-from core.utils import checkTokenExpiry
+from core.utils import getToken
 
 
 class UserCreateView(generics.CreateAPIView):
@@ -39,58 +41,38 @@ class UserCreateTokenView(generics.CreateAPIView):
 class UserVerifyTokenExpiryView(APIView):
     serializer_class = AuthTokenSerializer
 
+    authentication_classes = [RequireTokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
-        try:
-            # Get the token from the header
-            token_type = request.META.get('HTTP_AUTHORIZATION').split()[0]
-            if token_type != 'Bearer':
-                return Response({'message': 'Invalid token type'}, status=status.HTTP_400_BAD_REQUEST)
+        token = getToken(request)
+        if token.expires_at < timezone.now():
+            return Response({'message': 'Token expired'}, status=status.HTTP_400_BAD_REQUEST)
 
-            token = request.META.get('HTTP_AUTHORIZATION').split()[1]
-            exit_token = CustomToken.objects.get(key=token)
-
-            if exit_token.expires_at < timezone.now():
-                return Response({'message': 'Token expired'}, status=status.HTTP_400_BAD_REQUEST)
-
-            return Response({'message': 'Token is valid'}, status=status.HTTP_200_OK)
-        except CustomToken.DoesNotExist:
-            return Response({'message': 'Token not found'}, status=status.HTTP_404_NOT_FOUND)
-
-    # serializer_class = TokenExpirySerializer
-    # queryset = TokenExpiry.objects.all()
-    # lookup_field = 'token'
-    # lookup_url_kwarg = 'token'
-
-    # def retrieve(self, request, *args, **kwargs):
-    #     instance = self.get_object()
-    #     if instance.expiry < timezone.now():
-    #         Token.objects.get(key=instance.token).delete()
-    #         instance.delete()
-    #         return Response({'message': 'Token expired'}, status=status.HTTP_400_BAD_REQUEST)
-
-    #     return Response({'message': 'Token is valid'}, status=status.HTTP_200_OK)
+        return Response({'message': 'Token is valid'}, status=status.HTTP_200_OK)
 
 
 class UserTokenRevokeView(generics.GenericAPIView):
     serializer_class = AuthTokenSerializer
 
-    def post(self, request):
-        exit_token = checkTokenExpiry(request)
-        if not exit_token:
-            return Response({'message': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+    authentication_classes = [RequireTokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
-        exit_token.delete()
+    def post(self, request):
+        token = getToken(request)
+        token.delete()
+
         return Response({'message': 'Token revoked'}, status=status.HTTP_200_OK)
 
 
 class UserProfileView(APIView):
     serializer_class = UserSerializer
 
-    def get(self, request):
-        exit_token = checkTokenExpiry(request)
-        if not exit_token:
-            return Response({'message': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+    authentication_classes = [RequireTokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
-        user = User.objects.get(id=exit_token.user.id)
+    def get(self, request):
+        token = getToken(request)
+        user = User.objects.get(id=token.user.id)
         serializer = UserSerializer(user)
         return Response(serializer.data)

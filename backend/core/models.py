@@ -52,3 +52,6 @@ class CustomToken(models.Model):
         if not self.key:
             self.key = uuid.uuid4().hex  # Generate a unique key
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.key

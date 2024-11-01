@@ -151,7 +151,7 @@ REST_FRAMEWORK = {
 }
 
 
-# DRF Spectacular settings
+# DRF Spectacular settings for Swagger UI
 SPECTACULAR_SETTINGS = {
     'TITLE': 'API Documentation',
     'DESCRIPTION': 'API documentation with Bearer token',

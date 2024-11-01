@@ -1,6 +1,7 @@
 from drf_spectacular.extensions import OpenApiAuthenticationExtension
 from core.authentication import CustomTokenAuthentication
 
+# Custom token scheme for Swagger UI
 class CustomTokenScheme(OpenApiAuthenticationExtension):
     target_class = 'core.authentication.CustomTokenAuthentication'  # full import path to your class
     name = 'Bearer'  # This name will show up in the Swagger UI
@@ -9,5 +10,5 @@ class CustomTokenScheme(OpenApiAuthenticationExtension):
         return {
             'type': 'http',
             'scheme': 'bearer',
-            'bearerFormat': 'JWT',  # optional, can be customized
+            'bearerFormat': '',  # optional, can be customized
         }
