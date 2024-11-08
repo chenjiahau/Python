@@ -17,4 +17,11 @@ urlpatterns = [
     path('task-rank/update/<uuid:pk>/', views.TaskRankUpdateView.as_view(), name='task-rank-update'),
     path('task-rank/delete/<uuid:pk>/', views.TaskRankDeleteView.as_view(), name='task-rank-delete'),
     path('task-rank/delete/all/', views.TaskRankDeleteAllView.as_view(), name='task-rank-delete-all'),
+    # Task
+    path('', views.TaskView.as_view(), name='task'),
+    path('<uuid:pk>/', views.TaskDetailView.as_view(), name='task-detail'),
+    path('create/', views.TaskCreateView.as_view(), name='task-create'),
+    path('update/<uuid:pk>/', views.TaskUpdateView.as_view(), name='task-update'),
+    path('delete/<uuid:pk>/', views.TaskDeleteView.as_view(), name='task-delete'),
+    path('delete/all/', views.TaskDeleteAllView.as_view(), name='task-delete-all'),
 ]

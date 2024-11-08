@@ -80,21 +80,14 @@ class TaskRank(models.Model):
 class Task(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=100)
-    description = models.TextField()
-    level = models.ForeignKey(TaskLevel, on_delete=models.CASCADE)
-    rank = models.ForeignKey(TaskRank, on_delete=models.CASCADE)
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='tasks', blank=True)
+    description = models.TextField(null=True, blank=True)
+    level = models.ForeignKey(TaskLevel, null=True, blank=True, on_delete=models.CASCADE)
+    rank = models.ForeignKey(TaskRank, null=True, blank=True, on_delete=models.CASCADE)
+    started_at = models.DateTimeField(null=True, blank=True)
+    ended_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title
-
-
-class AssignedUser (models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return self.user.email
