@@ -1,1 +1,2 @@
-from .task_level import TaskLevelView, TaskLevelDetailView, TaskLevelCreateView, TaskLevelUpdateView, TaskLevelDeleteView
+from .task_level import *
+from .task_rank import *

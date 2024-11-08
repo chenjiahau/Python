@@ -60,7 +60,7 @@ class CustomToken(models.Model):
 class TaskLevel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=50)
-    level = models.IntegerField(unique=True)
+    level = models.IntegerField(unique=True, default=0)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -70,6 +70,7 @@ class TaskLevel(models.Model):
 class TaskRank(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=50)
+    rank = models.IntegerField(unique=True, default=0)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
