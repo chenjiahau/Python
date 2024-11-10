@@ -164,3 +164,7 @@ SPECTACULAR_SETTINGS = {
     },
     'SECURITY': [{'Bearer': []}],  # This should match the name in the extension
 }
+
+
+# Disable password validators
+AUTH_PASSWORD_VALIDATORS = []
