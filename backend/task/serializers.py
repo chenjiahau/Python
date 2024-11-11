@@ -9,6 +9,12 @@ from core.models import User, TaskLevel, TaskRank, Task, Review
 User = get_user_model()
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'first_name', 'last_name']
+
+
 class TaskLevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = TaskLevel
@@ -34,6 +40,15 @@ class TaskSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Only active users can be assigned to a task.")
 
         return value
+
+
+class TaskHasUserDetailSerializer(serializers.ModelSerializer):
+    users = UserSerializer(many=True)
+
+    class Meta:
+        model = Task
+        fields = ['id', 'title', 'users', 'description', 'level', 'rank', "started_at", "ended_at"]
+        depth = 1
 
 
 class ReviewSerializer(serializers.ModelSerializer):
