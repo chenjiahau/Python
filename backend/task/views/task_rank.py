@@ -49,7 +49,10 @@ class TaskRankUpdateView(UpdateAPIView):
     queryset = TaskRank.objects.all()
 
     def get_object(self):
-        return TaskRank.objects.get(id=self.kwargs['pk'])
+        try:
+            return super().get_object()
+        except TaskRank.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class TaskRankDeleteView(DestroyAPIView):
@@ -60,7 +63,10 @@ class TaskRankDeleteView(DestroyAPIView):
     queryset = TaskRank.objects.all()
 
     def get_object(self):
-        return TaskRank.objects.get(id=self.kwargs['pk'])
+        try:
+            return super().get_object()
+        except TaskRank.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class TaskRankDeleteAllView(DestroyAPIView):

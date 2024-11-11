@@ -28,7 +28,10 @@ class TaskDetailView(RetrieveAPIView):
     queryset = Task.objects.all()
 
     def get_object(self):
-        return Task.objects.get(id=self.kwargs['pk'])
+        try:
+            return super().get_object()
+        except Task.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class TaskCreateView(CreateAPIView):
@@ -47,7 +50,10 @@ class TaskUpdateView(UpdateAPIView):
     queryset = Task.objects.all()
 
     def get_object(self):
-        return Task.objects.get(id=self.kwargs['pk'])
+        try:
+            return super().get_object()
+        except Task.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class TaskDeleteView(DestroyAPIView):
@@ -58,7 +64,10 @@ class TaskDeleteView(DestroyAPIView):
     queryset = Task.objects.all()
 
     def get_object(self):
-        return Task.objects.get(id=self.kwargs['pk'])
+        try:
+            return super().get_object()
+        except Task.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class TaskDeleteAllView(DestroyAPIView):

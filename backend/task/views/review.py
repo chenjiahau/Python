@@ -28,7 +28,10 @@ class ReviewDetailView(RetrieveAPIView):
     queryset = Review.objects.all()
 
     def get_object(self):
-        return Review.objects.get(id=self.kwargs['pk'])
+        try:
+            return super().get_object()
+        except Review.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class ReviewCreateView(CreateAPIView):

@@ -49,7 +49,10 @@ class TaskLevelUpdateView(UpdateAPIView):
     queryset = TaskLevel.objects.all()
 
     def get_object(self):
-        return TaskLevel.objects.get(id=self.kwargs['pk'])
+        try:
+            return super().get_object()
+        except TaskLevel.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class TaskLevelDeleteView(DestroyAPIView):
@@ -60,7 +63,10 @@ class TaskLevelDeleteView(DestroyAPIView):
     queryset = TaskLevel.objects.all()
 
     def get_object(self):
-        return TaskLevel.objects.get(id=self.kwargs['pk'])
+        try:
+            return super().get_object()
+        except TaskLevel.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class TaskLevelDeleteAllView(DestroyAPIView):
