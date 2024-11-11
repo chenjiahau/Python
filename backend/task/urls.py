@@ -24,4 +24,8 @@ urlpatterns = [
     path('update/<uuid:pk>/', views.TaskUpdateView.as_view(), name='task-update'),
     path('delete/<uuid:pk>/', views.TaskDeleteView.as_view(), name='task-delete'),
     path('delete/all/', views.TaskDeleteAllView.as_view(), name='task-delete-all'),
+    # Review
+    path('review/', views.ReviewView.as_view(), name='review'),
+    path('review/<uuid:pk>/', views.ReviewDetailView.as_view(), name='review-detail'),
+    path('review/create/', views.ReviewCreateView.as_view(), name='review-create'),
 ]

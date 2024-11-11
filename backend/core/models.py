@@ -1,6 +1,7 @@
 import uuid
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils import timezone
 
@@ -84,6 +85,7 @@ class Task(models.Model):
     description = models.TextField(null=True, blank=True)
     level = models.ForeignKey(TaskLevel, null=True, blank=True, on_delete=models.CASCADE)
     rank = models.ForeignKey(TaskRank, null=True, blank=True, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
     started_at = models.DateTimeField(null=True, blank=True)
     ended_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
@@ -91,3 +93,15 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Review(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    task = models.ForeignKey(Task, related_name='reviews', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='reviews', on_delete=models.CASCADE)
+    point = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    content = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.task.title} - {self.point}"
