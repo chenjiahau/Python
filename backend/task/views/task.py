@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.filters import OrderingFilter
-from task.serializers import TaskSerializer, TaskHasUserDetailSerializer
+from task.serializers import TaskSerializer, BulkTaskSerializer, TaskHasUserDetailSerializer
 
 from core.authentication import RequireTokenAuthentication
 from core.models import Task
@@ -40,6 +40,23 @@ class TaskCreateView(CreateAPIView):
 
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
+
+
+class BulkTaskCreateView(CreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = BulkTaskSerializer
+
+    def create(self, request, *args, **kwargs):
+        is_bulk = isinstance(request.data, list)
+        serializer = self.get_serializer(data=request.data, many=is_bulk)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def perform_create(self, serializer):
+        serializer.save()
 
 
 class TaskUpdateView(UpdateAPIView):

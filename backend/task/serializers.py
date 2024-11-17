@@ -42,6 +42,31 @@ class TaskSerializer(serializers.ModelSerializer):
         return value
 
 
+class BulkTaskListSerializer(serializers.ListSerializer):
+    def create(self, validated_data):
+        tasks = []
+        for task_data in validated_data:
+            users_data = task_data.pop('users', [])
+            task = Task(**task_data)
+            task.save()
+
+            if users_data:
+                task.users.set(users_data)
+
+            tasks.append(task)
+
+        return tasks
+
+
+class BulkTaskSerializer(serializers.ModelSerializer):
+    users = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
+
+    class Meta:
+        model = Task
+        fields = ['id', 'title', 'users', 'description', 'level', 'rank', "started_at", "ended_at"]
+        list_serializer_class = BulkTaskListSerializer
+
+
 class TaskHasUserDetailSerializer(serializers.ModelSerializer):
     users = UserSerializer(many=True)
 

@@ -21,6 +21,7 @@ urlpatterns = [
     path('', views.TaskView.as_view(), name='task'),
     path('<uuid:pk>/', views.TaskDetailView.as_view(), name='task-detail'),
     path('create/', views.TaskCreateView.as_view(), name='task-create'),
+    path('bulk-create/', views.BulkTaskCreateView.as_view(), name='bulk-task-create'),
     path('update/<uuid:pk>/', views.TaskUpdateView.as_view(), name='task-update'),
     path('delete/<uuid:pk>/', views.TaskDeleteView.as_view(), name='task-delete'),
     path('delete/all/', views.TaskDeleteAllView.as_view(), name='task-delete-all'),
