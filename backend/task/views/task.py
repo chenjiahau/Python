@@ -7,11 +7,14 @@ from task.serializers import TaskSerializer, BulkTaskSerializer, TaskHasUserDeta
 
 from core.authentication import RequireTokenAuthentication
 from core.models import Task
+from core.pagination import CustomTaskPagination
 
 
 class TaskView(ListAPIView):
     authentication_classes = [RequireTokenAuthentication]
     permission_classes = [IsAuthenticated]
+    pagination_class = CustomTaskPagination
+
     filter_backends = [OrderingFilter]
     ordering_fields = ['title', 'created_at', 'updated_at']
     ordering = ['created_at']
