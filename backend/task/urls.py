@@ -19,6 +19,7 @@ urlpatterns = [
     path('task-rank/delete/all/', views.TaskRankDeleteAllView.as_view(), name='task-rank-delete-all'),
     # Task
     path('', views.TaskView.as_view(), name='task'),
+    path('search/', views.TaskSearchView.as_view(), name='task-search'),
     path('<uuid:pk>/', views.TaskDetailView.as_view(), name='task-detail'),
     path('create/', views.TaskCreateView.as_view(), name='task-create'),
     path('bulk-create/', views.BulkTaskCreateView.as_view(), name='bulk-task-create'),

@@ -42,6 +42,11 @@ class TaskSerializer(serializers.ModelSerializer):
         return value
 
 
+class TaskSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = ['id', 'title', 'users', 'description', 'level', 'rank', "started_at", "ended_at"]
+
 class BulkTaskListSerializer(serializers.ListSerializer):
     def create(self, validated_data):
         tasks = []

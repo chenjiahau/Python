@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
-from rest_framework.filters import OrderingFilter
+from rest_framework.filters import OrderingFilter, SearchFilter
 from task.serializers import TaskSerializer, BulkTaskSerializer, TaskHasUserDetailSerializer
 
 from core.authentication import RequireTokenAuthentication
@@ -16,6 +16,23 @@ class TaskView(ListAPIView):
     pagination_class = CustomTaskPagination
 
     filter_backends = [OrderingFilter]
+    ordering_fields = ['title', 'created_at', 'updated_at']
+    ordering = ['created_at']
+
+    serializer_class = TaskHasUserDetailSerializer
+    queryset = Task.objects.all()
+
+
+class TaskSearchView(ListAPIView):
+    authentication_classes = [RequireTokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    pagination_class = CustomTaskPagination
+
+    filter_backends = [OrderingFilter, SearchFilter]
+    search_fields = [
+        'title', 'users__first_name', 'users__last_name', 'description', 'level__title', 'rank__title',
+        'created_at', 'updated_at'
+    ]
     ordering_fields = ['title', 'created_at', 'updated_at']
     ordering = ['created_at']
 
