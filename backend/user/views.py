@@ -68,11 +68,22 @@ class UserTokenRevokeView(generics.GenericAPIView):
 class UserProfileView(APIView):
     serializer_class = UserSerializer
 
-    authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    authentication_classes = [RequireTokenAuthentication] # User must be authenticated(token required)
+    permission_classes = [IsAuthenticated] # User must be authenticated(token required)
 
     def get(self, request):
         token = getToken(request)
         user = User.objects.get(id=token.user.id)
         serializer = UserSerializer(user)
+        return Response(serializer.data)
+
+    def put(self, request):
+        token = getToken(request)
+        user = User.objects.get(id=token.user.id)
+        serializer = UserSerializer(user, data=request.data)
+
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer.save()
         return Response(serializer.data)
