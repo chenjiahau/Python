@@ -20,6 +20,7 @@ urlpatterns = [
     # Task
     path('', views.TaskView.as_view(), name='task'),
     path('search/', views.TaskSearchView.as_view(), name='task-search'),
+    path('statistics/', views.TaskStatisticsView.as_view(), name='task-statistics'),
     path('<uuid:pk>/', views.TaskDetailView.as_view(), name='task-detail'),
     path('create/', views.TaskCreateView.as_view(), name='task-create'),
     path('bulk-create/', views.BulkTaskCreateView.as_view(), name='bulk-task-create'),

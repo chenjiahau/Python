@@ -1,3 +1,4 @@
+from django.db import connection
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -46,6 +47,35 @@ class TaskSearchView(ListAPIView):
 
     serializer_class = TaskHasUserDetailSerializer
     queryset = Task.objects.all()
+
+
+class TaskStatisticsView(ListAPIView):
+    authentication_classes = [RequireTokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def list(self, request, *args, **kwargs):
+        query = """
+            SELECT
+                COUNT(*) AS total_tasks,
+                COUNT(CASE WHEN is_active = TRUE THEN 1 ELSE NULL END) AS active_tasks,
+                COUNT(CASE WHEN is_active = FALSE THEN 1 ELSE NULL END) AS inactive_tasks,
+                COUNT(CASE WHEN started_at IS NOT NULL THEN 1 ELSE NULL END) AS started_tasks,
+                COUNT(CASE WHEN ended_at IS NOT NULL THEN 1 ELSE NULL END) AS ended_tasks
+            FROM core_task
+        """
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            row = cursor.fetchone()
+
+        data = {
+            'total_tasks': row[0],
+            'active_tasks': row[1],
+            'inactive_tasks': row[2],
+            'started_tasks': row[3],
+            'ended_tasks': row[4],
+        }
+
+        return Response(data, status=status.HTTP_200_OK)
 
 
 class TaskDetailView(RetrieveAPIView):
