@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -28,11 +29,18 @@ class TaskSearchView(ListAPIView):
     permission_classes = [IsAuthenticated]
     pagination_class = CustomTaskPagination
 
-    filter_backends = [OrderingFilter, SearchFilter]
+    filter_backends = [OrderingFilter, SearchFilter, DjangoFilterBackend]
     search_fields = [
         'title', 'users__first_name', 'users__last_name', 'description', 'level__title', 'rank__title',
         'created_at', 'updated_at'
     ]
+    filterset_fields = {
+        'is_active': ['exact'],
+        'level__level': ['exact', 'lt', 'gt', 'lte', 'gte'],
+        'rank__rank': ['exact', 'lt', 'gt', 'lte', 'gte'],
+        'created_at': ['exact', 'lt', 'gt', 'lte', 'gte'],
+        'updated_at': ['exact', 'lt', 'gt', 'lte', 'gte'],
+    }
     ordering_fields = ['title', 'created_at', 'updated_at']
     ordering = ['created_at']
 
