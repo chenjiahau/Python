@@ -6,4 +6,5 @@ class CoreConfig(AppConfig):
     name = 'core'
 
     def ready(self):
-        import core.extensions 
+        import core.extensions
+        import core.signals
