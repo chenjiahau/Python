@@ -1,17 +1,18 @@
 from django.db.models.signals import post_migrate
 from django.dispatch import receiver
-from core.models import User, TaskLevel, TaskRank
+from core.models import Role, TaskLevel, TaskRank
+
 
 @receiver(post_migrate)
-def create_default_user(sender, **kwargs):
-    default_users = [
-        {"email": "testuser1@todo.com", "first_name": "Test", "last_name": "User1", "is_staff": True, "is_superuser": False},
-        {"email": "testuser2@todo.com", "first_name": "Test", "last_name": "User2", "is_staff": True, "is_superuser": False},
+def create_default_roles(sender, **kwargs):
+    default_roles = [
+        {"title": "Admin"},
+        {"title": "User"},
     ]
 
-    for user_data in default_users:
-        if not User.objects.filter(email=user_data["email"]).exists():
-            User.objects.create_user(**user_data)
+    for role_data in default_roles:
+        if not Role.objects.filter(title=role_data["title"]).exists():
+            Role.objects.create(**role_data)
 
 
 @receiver(post_migrate)

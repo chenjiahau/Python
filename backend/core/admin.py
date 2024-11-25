@@ -23,6 +23,7 @@ class UserAdmin(BaseUserAdmin):
     )
 
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Role)
 admin.site.register(models.CustomToken)
 admin.site.register(models.TaskLevel)
 admin.site.register(models.TaskRank)

@@ -41,6 +41,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
+class Role(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=50, unique=True)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
+
+
 class CustomToken(models.Model):
     key = models.CharField(max_length=40, unique=True, default=uuid.uuid4().hex)
     user = models.ForeignKey(
