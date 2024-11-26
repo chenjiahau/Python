@@ -1,3 +1,4 @@
+import secrets
 from django.contrib.auth import (
     get_user_model,
     authenticate,
@@ -30,6 +31,9 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
+def generate_token_key(length=40):
+    return secrets.token_hex(length // 2)
+
 class AuthTokenSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(
@@ -48,6 +52,7 @@ class AuthTokenSerializer(serializers.Serializer):
         if not user:
             msg = 'Unable to authenticate with provided credentials'
             raise serializers.ValidationError(msg, code='authentication')
+        attrs['key'] = generate_token_key()
         attrs['user'] = user
 
         return attrs

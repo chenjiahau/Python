@@ -52,7 +52,7 @@ class Role(models.Model):
 
 
 class CustomToken(models.Model):
-    key = models.CharField(max_length=40, unique=True, default=uuid.uuid4().hex)
+    key = models.CharField(max_length=40, unique=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, related_name='auth_tokens', on_delete=models.CASCADE
     )
