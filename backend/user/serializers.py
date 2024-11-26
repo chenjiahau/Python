@@ -30,6 +30,9 @@ class UserSerializer(serializers.ModelSerializer):
 
         return user
 
+    def delete(self, instance):
+        instance.delete()
+
 
 def generate_token_key(length=40):
     return secrets.token_hex(length // 2)

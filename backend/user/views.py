@@ -16,6 +16,20 @@ class UserCreateView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
 
+class UserDeleteView(generics.DestroyAPIView):
+    serializer_class = UserSerializer
+
+    authentication_classes = [RequireTokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request):
+        token = getToken(request)
+        user = User.objects.get(id=token.user.id)
+        user.delete()
+
+        return Response({'message': 'User deleted'}, status=status.HTTP_200_OK)
+
+
 class UserCreateTokenView(generics.CreateAPIView):
     serializer_class = AuthTokenSerializer
 
