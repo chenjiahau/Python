@@ -1,6 +1,6 @@
 from django.db.models.signals import post_migrate
 from django.dispatch import receiver
-from core.models import Role, TaskLevel, TaskRank
+from core.models import Role, Privilege, TaskLevel, TaskRank
 
 
 @receiver(post_migrate)
@@ -13,6 +13,19 @@ def create_default_roles(sender, **kwargs):
     for role_data in default_roles:
         if not Role.objects.filter(title=role_data["title"]).exists():
             Role.objects.create(**role_data)
+
+
+@receiver(post_migrate)
+def create_default_privileges(sender, **kwargs):
+    default_privileges = [
+        {"title": "Admin", "value": 1},
+        {"title": "Editor", "value": 2},
+        {"title": "Viewer", "value": 3},
+    ]
+
+    for privilege_data in default_privileges:
+        if not Privilege.objects.filter(title=privilege_data["title"]).exists():
+            Privilege.objects.create(**privilege_data)
 
 
 @receiver(post_migrate)

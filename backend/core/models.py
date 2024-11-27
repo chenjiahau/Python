@@ -51,6 +51,16 @@ class Role(models.Model):
         return self.title
 
 
+class Privilege(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=50, unique=True)
+    value = models.IntegerField(unique=True, default=0)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
+
+
 class CustomToken(models.Model):
     key = models.CharField(max_length=40, unique=True)
     user = models.ForeignKey(
