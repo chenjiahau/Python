@@ -31,6 +31,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     role = models.ForeignKey('Role', null=True, blank=True, on_delete=models.CASCADE)
+    privilege = models.ForeignKey('Privilege', null=True, blank=True, on_delete=models.CASCADE)
     date_joined = models.DateTimeField(default=timezone.now)
 
     objects = UserManager()
