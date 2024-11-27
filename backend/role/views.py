@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from role.serializers import RoleSerializer
 from core.authentication import RequireTokenAuthentication
+from core.permission import HasPrivilegePermission
 from core.models import Role
 
 
@@ -32,7 +33,8 @@ class RoleDetailView(RetrieveAPIView):
 
 class RoleCreateView(CreateAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = RoleSerializer
     queryset = Role.objects.all()
@@ -40,7 +42,8 @@ class RoleCreateView(CreateAPIView):
 
 class RoleUpdateView(UpdateAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = RoleSerializer
     queryset = Role.objects.all()
@@ -54,7 +57,8 @@ class RoleUpdateView(UpdateAPIView):
 
 class RoleDeleteView(DestroyAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = RoleSerializer
     queryset = Role.objects.all()
@@ -68,7 +72,8 @@ class RoleDeleteView(DestroyAPIView):
 
 class RoleDeleteAllView(DestroyAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = RoleSerializer
     queryset = Role.objects.all()

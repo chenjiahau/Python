@@ -10,15 +10,12 @@ from core.models import Role, Privilege
 
 
 class UserSerializer(serializers.ModelSerializer):
-    role = RoleSerializer(read_only=True)
     role_id = serializers.PrimaryKeyRelatedField(queryset=Role.objects.all(), write_only=True, source='role')
-
-    privilege = PrivilegeSerializer(read_only=True)
     privilege_id = serializers.PrimaryKeyRelatedField(queryset=Privilege.objects.all(), write_only=True, source='privilege')
 
     class Meta:
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'email', 'password', 'role', 'role_id', 'privilege', 'privilege_id')
+        fields = ('first_name', 'last_name', 'email', 'password', 'role_id', 'privilege_id')
         extra_kwargs = {'password': {'write_only': True, 'min_length': 8, 'max_length': 32}}
 
     def create(self, validated_data):

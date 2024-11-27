@@ -8,6 +8,7 @@ from rest_framework.filters import OrderingFilter, SearchFilter
 from task.serializers import TaskSerializer, BulkTaskSerializer, TaskHasUserDetailSerializer
 
 from core.authentication import RequireTokenAuthentication
+from core.permission import HasPrivilegePermission
 from core.models import Task
 from core.pagination import CustomTaskPagination
 
@@ -94,7 +95,8 @@ class TaskDetailView(RetrieveAPIView):
 
 class TaskCreateView(CreateAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
@@ -119,7 +121,8 @@ class BulkTaskCreateView(CreateAPIView):
 
 class TaskUpdateView(UpdateAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
@@ -133,7 +136,8 @@ class TaskUpdateView(UpdateAPIView):
 
 class TaskDeleteView(DestroyAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
@@ -147,7 +151,8 @@ class TaskDeleteView(DestroyAPIView):
 
 class TaskDeleteAllView(DestroyAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = TaskSerializer
     queryset = Task.objects.all()

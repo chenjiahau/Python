@@ -5,8 +5,8 @@ from rest_framework.permissions import IsAuthenticated
 
 from privilege.serializers import PrivilegeSerializer
 from core.authentication import RequireTokenAuthentication
-from core.models import User, Privilege
-from core.utils import getToken
+from core.permission import HasPrivilegePermission
+from core.models import Privilege
 
 
 class PrivilegeView(ListAPIView):
@@ -33,42 +33,20 @@ class PrivilegeDetailView(RetrieveAPIView):
 
 class PrivilegeCreateView(CreateAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = PrivilegeSerializer
     queryset = Privilege.objects.all()
-
-    def create(self, request, *args, **kwargs):
-        token = getToken(request)
-        user = User.objects.get(id=token.user.id)
-
-        if not user.is_superuser:
-            return Response({'message': 'You do not have permission to create privileges'}, status=status.HTTP_403_FORBIDDEN)
-
-        return super().create(request, *args, **kwargs)
-
-    def perform_create(self, serializer):
-        serializer.save()
 
 
 class PrivilegeUpdateView(UpdateAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = PrivilegeSerializer
     queryset = Privilege.objects.all()
-
-    def update(self, request, *args, **kwargs):
-        token = getToken(request)
-        user = User.objects.get(id=token.user.id)
-
-        if not user.is_superuser:
-            return Response({'message': 'You do not have permission to update privileges'}, status=status.HTTP_403_FORBIDDEN)
-
-        return super().update(request, *args, **kwargs)
-
-    def perform_update(self, serializer):
-        serializer.save()
 
     def get_object(self):
         try:
@@ -79,22 +57,11 @@ class PrivilegeUpdateView(UpdateAPIView):
 
 class PrivilegeDeleteView(DestroyAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = PrivilegeSerializer
     queryset = Privilege.objects.all()
-
-    def delete(self, request, *args, **kwargs):
-        token = getToken(request)
-        user = User.objects.get(id=token.user.id)
-
-        if not user.is_superuser:
-            return Response({'message': 'You do not have permission to delete privileges'}, status=status.HTTP_403_FORBIDDEN)
-
-        return super().delete(request, *args, **kwargs)
-
-    def perform_destroy(self, instance):
-        instance.delete()
 
     def get_object(self):
         try:
@@ -105,20 +72,11 @@ class PrivilegeDeleteView(DestroyAPIView):
 
 class PrivilegeDeleteAllView(DestroyAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = PrivilegeSerializer
     queryset = Privilege.objects.all()
-
-    def delete(self, request, *args, **kwargs):
-        token = getToken(request)
-        user = User.objects.get(id=token.user.id)
-
-        if not user.is_superuser:
-            return Response({'message': 'You do not have permission to delete privileges'}, status=status.HTTP_403_FORBIDDEN)
-
-        Privilege.objects.all().delete()
-        return Response({'message': 'All privileges deleted'}, status=status.HTTP_200_OK)
 
     def get_object(self):
         return Privilege.objects.all()

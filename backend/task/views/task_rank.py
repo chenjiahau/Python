@@ -5,6 +5,7 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView,
 from task.serializers import TaskRankSerializer
 
 from core.authentication import RequireTokenAuthentication
+from core.permission import HasPrivilegePermission
 from core.models import TaskRank
 
 
@@ -35,7 +36,8 @@ class TaskRankDetailView(RetrieveAPIView):
 
 class TaskRankCreateView(CreateAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = TaskRankSerializer
     queryset = TaskRank.objects.all()
@@ -43,7 +45,8 @@ class TaskRankCreateView(CreateAPIView):
 
 class TaskRankUpdateView(UpdateAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = TaskRankSerializer
     queryset = TaskRank.objects.all()
@@ -57,7 +60,8 @@ class TaskRankUpdateView(UpdateAPIView):
 
 class TaskRankDeleteView(DestroyAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = TaskRankSerializer
     queryset = TaskRank.objects.all()
@@ -71,7 +75,8 @@ class TaskRankDeleteView(DestroyAPIView):
 
 class TaskRankDeleteAllView(DestroyAPIView):
     authentication_classes = [RequireTokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HasPrivilegePermission]
+    required_privileges = [1, 2]
 
     serializer_class = TaskRankSerializer
     queryset = TaskRank.objects.all()
