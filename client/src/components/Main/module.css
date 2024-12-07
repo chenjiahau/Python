@@ -1,0 +1,10 @@
+.main {
+  padding: 16px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 20000px;
+}
