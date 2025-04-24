@@ -1,13 +1,12 @@
-from pydantic import BaseModel, Field
-from typing import Optional
+from sqlalchemy import Column, Integer, String
+from database import Base
 
-class TodoItem(BaseModel):
-    task: str = Field(min_length=1, max_length=32)
-    description: Optional[str] = Field(max_length=128, default=None)
-    level: Optional[int] = Field(ge=1, le=5, default=1)
-    due_date: Optional[str] = Field(default=None)
-    priority: Optional[int] = Field(ge=1, le=5, default=3)
-    completed: Optional[bool] = Field(default=False)
+class User(Base):
+    __tablename__ = "users"
 
-    def __init__(self, **data):
-        super().__init__(**data)
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, nullable=False)
+    email = Column(String, unique=True, index=True)
+    disabled = Column(String, default=False)
+    created_at = Column(String, nullable=False)
+    updated_at = Column(String, nullable=False)
