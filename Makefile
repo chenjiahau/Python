@@ -1,8 +1,4 @@
-create_db:
-	docker exec -it todo createdb --username=todo --owner=todo todo
-
 drop_db:
-	docker exec -it todo dropdb todo -U todo
+	docker rm todo-db
 
-
-.PHONY: create_db drop_db
+.PHONY: drop_db
