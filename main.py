@@ -67,3 +67,55 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
             status_code=status.HTTP_404_NOT_FOUND,
             detail=str(e)
         )
+
+@app.get("/users/{user_id}/tasks", response_model=list[schemas.TaskOut])
+def get_tasks_by_user(user_id: int, db: Session = Depends(get_db)):
+    try:
+        tasks = controllers.get_all_tasks_by_user(db, user_id)
+        return tasks
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e)
+        )
+
+@app.get("/users/{user_id}/tasks/{task_id}", response_model=schemas.TaskOut)
+def get_task_by_user_and_id(user_id: int, task_id: int, db: Session = Depends(get_db)):
+    try:
+        task = controllers.get_task_by_user_and_id(db, user_id, task_id)
+        return task
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e)
+        )
+
+@app.post("/users/{user_id}/tasks", response_model=schemas.TaskOut)
+def create_task(user_id: int, task: schemas.TaskCreate, db: Session = Depends(get_db)):
+    try:
+        return controllers.create_task(db, user_id, task)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+
+@app.put("/users/{user_id}/tasks/{task_id}", response_model=schemas.TaskOut)
+def update_task(user_id: int, task_id: int, task: schemas.TaskUpdate, db: Session = Depends(get_db)):
+    try:
+        return controllers.update_task(db, user_id, task_id, task)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+
+@app.delete("/users/{user_id}/tasks/{task_id}", response_model=schemas.TaskOut)
+def delete_task(user_id: int, task_id: int, db: Session = Depends(get_db)):
+    try:
+        return controllers.delete_task(db, user_id, task_id)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(e)
+        )

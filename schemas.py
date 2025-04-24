@@ -55,3 +55,60 @@ class UserDelete(BaseModel):
 
     class Config:
         from_attributes = True
+
+class TaskSchema(BaseModel):
+    title: str = Field(min_length=3, max_length=32, description="The title of the task")
+    description: Optional[str] = Field(None, description="The description of the task")
+    completed: Optional[bool] = Field(False, description="Whether the task is completed")
+
+    class Config:
+        from_attributes = True
+
+class TaskOut(TaskSchema):
+    id: int = Field(..., description="The unique identifier of the task")
+    user_id: int = Field(..., description="The unique identifier of the user")
+    user : UserOut = Field(..., description="The user who created the task")
+    created_at: str = Field(..., description="The creation date of the task")
+    updated_at: str = Field(..., description="The last update date of the task")
+
+    class Config:
+        from_attributes = True
+        orm_mode = True
+
+class TaskCreate(TaskSchema):
+    title: str = Field(min_length=3, max_length=32, description="The title of the task")
+    description: Optional[str] = Field(None, description="The description of the task")
+    completed: Optional[bool] = Field(False, description="Whether the task is completed")
+    created_at: str = Field(default_factory=lambda: datetime.now().isoformat(), description="The creation date of the task")
+    updated_at: str = Field(default_factory=lambda: datetime.now().isoformat(), description="The last update date of the task")
+
+    def __init__(self, **data):
+        super().__init__(**data)
+        self.created_at = datetime.now().isoformat()
+        self.updated_at = datetime.now().isoformat()
+
+    class Config:
+        from_attributes = True
+
+class TaskUpdate(TaskSchema):
+    title: str = Field(min_length=3, max_length=32, description="The title of the task")
+    description: Optional[str] = Field(None, description="The description of the task")
+    completed: Optional[bool] = Field(False, description="Whether the task is completed")
+    updated_at: str = Field(default_factory=lambda: datetime.now().isoformat(), description="The last update date of the task")
+
+    def __init__(self, **data):
+        super().__init__(**data)
+        self.updated_at = datetime.now().isoformat()
+
+    class Config:
+        from_attributes = True
+
+class TaskDelete(BaseModel):
+    id: int = Field(..., description="The unique identifier of the task")
+    user_id: int = Field(..., description="The unique identifier of the user")
+
+    def __init__(self, **data):
+        super().__init__(**data)
+
+    class Config:
+        from_attributes = True
