@@ -1,3 +1,4 @@
+from typing import Annotated
 from fastapi import FastAPI, Path, HTTPException, Depends
 from starlette import status
 from sqlalchemy.orm import Session
@@ -16,8 +17,10 @@ def get_db():
     finally:
         db.close()
 
+db_dependency = Annotated[Session, Depends(get_db)]
+
 @app.get("/users/", response_model=list[schemas.UserOut])
-def get_users(db: Session = Depends(get_db)):
+def get_users(db: db_dependency):
     try:
         users = controllers.get_all_users(db)
         return users
@@ -28,7 +31,7 @@ def get_users(db: Session = Depends(get_db)):
         )
 
 @app.get("/users/{user_id}", response_model=schemas.UserOut)
-def get_user(user_id: int = Path(..., title="The ID of the user to get"), db: Session = Depends(get_db)):
+def get_user(db: db_dependency, user_id: int = Path(..., title="The ID of the user to get")):
     try:
         user = controllers.get_user_by_id(db, user_id)
         return user
@@ -39,7 +42,7 @@ def get_user(user_id: int = Path(..., title="The ID of the user to get"), db: Se
         )
 
 @app.post("/users/", response_model=schemas.UserOut)
-def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+def create_user(user: schemas.UserCreate, db: db_dependency):
     try:
         return controllers.create_user(db, user)
     except Exception as e:
@@ -49,7 +52,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
         )
 
 @app.put("/users/{user_id}", response_model=schemas.UserOut)
-def update_user(user_id: int, user: schemas.UserUpdate, db: Session = Depends(get_db)):
+def update_user(user_id: int, user: schemas.UserUpdate, db: db_dependency):
     try:
         return controllers.update_user(db, user_id, user)
     except Exception as e:
@@ -59,7 +62,7 @@ def update_user(user_id: int, user: schemas.UserUpdate, db: Session = Depends(ge
         )
 
 @app.delete("/users/{user_id}", response_model=schemas.UserDelete)
-def delete_user(user_id: int, db: Session = Depends(get_db)):
+def delete_user(user_id: int, db: db_dependency):
     try:
         return controllers.delete_user(db, user_id)
     except Exception as e:
@@ -69,7 +72,7 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
         )
 
 @app.get("/users/{user_id}/tasks", response_model=list[schemas.TaskOut])
-def get_tasks_by_user(user_id: int, db: Session = Depends(get_db)):
+def get_tasks_by_user(user_id: int, db: db_dependency):
     try:
         tasks = controllers.get_all_tasks_by_user(db, user_id)
         return tasks
@@ -80,7 +83,7 @@ def get_tasks_by_user(user_id: int, db: Session = Depends(get_db)):
         )
 
 @app.get("/users/{user_id}/tasks/{task_id}", response_model=schemas.TaskOut)
-def get_task_by_user_and_id(user_id: int, task_id: int, db: Session = Depends(get_db)):
+def get_task_by_user_and_id(user_id: int, task_id: int, db: db_dependency):
     try:
         task = controllers.get_task_by_user_and_id(db, user_id, task_id)
         return task
@@ -91,7 +94,7 @@ def get_task_by_user_and_id(user_id: int, task_id: int, db: Session = Depends(ge
         )
 
 @app.post("/users/{user_id}/tasks", response_model=schemas.TaskOut)
-def create_task(user_id: int, task: schemas.TaskCreate, db: Session = Depends(get_db)):
+def create_task(user_id: int, task: schemas.TaskCreate, db: db_dependency):
     try:
         return controllers.create_task(db, user_id, task)
     except Exception as e:
@@ -101,7 +104,7 @@ def create_task(user_id: int, task: schemas.TaskCreate, db: Session = Depends(ge
         )
 
 @app.put("/users/{user_id}/tasks/{task_id}", response_model=schemas.TaskOut)
-def update_task(user_id: int, task_id: int, task: schemas.TaskUpdate, db: Session = Depends(get_db)):
+def update_task(user_id: int, task_id: int, task: schemas.TaskUpdate, db: db_dependency):
     try:
         return controllers.update_task(db, user_id, task_id, task)
     except Exception as e:
@@ -111,7 +114,7 @@ def update_task(user_id: int, task_id: int, task: schemas.TaskUpdate, db: Sessio
         )
 
 @app.delete("/users/{user_id}/tasks/{task_id}", response_model=schemas.TaskOut)
-def delete_task(user_id: int, task_id: int, db: Session = Depends(get_db)):
+def delete_task(user_id: int, task_id: int, db: db_dependency):
     try:
         return controllers.delete_task(db, user_id, task_id)
     except Exception as e:
