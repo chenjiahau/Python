@@ -6,7 +6,7 @@ from database import SessionLocal, engine, Base
 import schemas
 import controllers
 
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 def get_db():

@@ -1,3 +1,4 @@
+from datetime import datetime
 from sqlalchemy.orm import Session, joinedload
 from models import User, Task
 from schemas import UserCreate, UserUpdate, TaskCreate, TaskUpdate
@@ -14,6 +15,8 @@ def get_user_by_id(db: Session, user_id: int):
 
 def create_user(db: Session, user: UserCreate):
     db_user = User(**user.model_dump())
+    db_user.created_at = datetime.now().isoformat()
+    db_user.updated_at = datetime.now().isoformat()
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
@@ -25,6 +28,7 @@ def update_user(db: Session, user_id: int, user: UserUpdate):
         raise Exception("User not found")
     for key, value in user.model_dump().items():
         setattr(db_user, key, value)
+    db_user.updated_at = datetime.now().isoformat()
     db.commit()
     db.refresh(db_user)
     return db_user
@@ -50,6 +54,8 @@ def get_task_by_user_and_id(db: Session, user_id: int, task_id: int):
 def create_task(db: Session, user_id: int, task: TaskCreate):
     db_task = Task(**task.model_dump())
     db_task.user_id = user_id
+    db_task.created_at = datetime.now().isoformat()
+    db_task.updated_at = datetime.now().isoformat()
     db.add(db_task)
     db.commit()
     db.refresh(db_task)
@@ -62,6 +68,7 @@ def update_task(db: Session, user_id: int, task_id: int, task: TaskUpdate):
     for key, value in task.model_dump().items():
         setattr(db_task, key, value)
     db_task.user_id = user_id
+    db_task.updated_at = datetime.now().isoformat()
     db.commit()
     db.refresh(db_task)
     return db_task

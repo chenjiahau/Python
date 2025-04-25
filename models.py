@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, Boolean
+from sqlalchemy import Column, ForeignKey, Integer, String, Boolean, DateTime
 from sqlalchemy.orm import relationship
 from database import Base
 
@@ -9,8 +9,8 @@ class User(Base):
     username = Column(String, nullable=False)
     email = Column(String, unique=True, index=True)
     disabled = Column(Boolean, default=False)
-    created_at = Column(String, nullable=False)
-    updated_at = Column(String, nullable=False)
+    created_at = Column(DateTime, nullable=False)
+    updated_at = Column(DateTime, nullable=False)
 
     tasks = relationship("Task", back_populates="user")
 
@@ -22,7 +22,7 @@ class Task(Base):
     description = Column(String, nullable=True)
     completed = Column(Boolean, default=False)
     user_id = Column(Integer, ForeignKey("users.id"))
-    created_at = Column(String, nullable=False)
-    updated_at = Column(String, nullable=False)
+    created_at = Column(DateTime, nullable=False)
+    updated_at = Column(DateTime, nullable=False)
 
     user = relationship("User", back_populates="tasks")
