@@ -2,6 +2,14 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 from typing import Optional
 
+class TokenOut(BaseModel):
+    id: int = Field(..., description="The unique identifier of the user")
+    username: str = Field(..., description="The username of the user")
+    email: str = Field(..., description="The email of the user")
+    disabled: Optional[bool] = Field(False, description="Whether the user is disabled")
+    access_token: str = Field(..., description="The access token")
+    token_type: str = Field(..., description="The type of the token")
+
 class UserSchema(BaseModel):
     username: str = Field(min_length=3, max_length=32, description="The username of the user")
     email: str = Field(..., description="The email of the user")
@@ -22,6 +30,7 @@ class UserOut(UserSchema):
 class UserCreate(UserSchema):
     username: str = Field(min_length=3, max_length=32, description="The username of the user")
     email: str = Field(..., description="The email of the user")
+    password: str = Field(..., min_length=8, max_length=32, description="The password of the user")
     disabled: Optional[bool] = Field(False, description="Whether the user is disabled")
 
     class Config:
@@ -30,6 +39,7 @@ class UserCreate(UserSchema):
 class UserUpdate(UserSchema):
     username: str = Field(min_length=3, max_length=32, description="The username of the user")
     email: str = Field(..., description="The email of the user")
+    password: Optional[str] = Field(None, min_length=8, max_length=32, description="The password of the user")
     disabled: Optional[bool] = Field(False, description="Whether the user is disabled")
 
     class Config:

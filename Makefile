@@ -5,7 +5,7 @@ init_alembic:
 	alembic init alembic
 
 generate_migration:
-	alembic revision --autogenerate -m "Create ${table} table"
+	alembic revision --autogenerate -m "${message}"
 
 apply_migration:
 	alembic upgrade head
