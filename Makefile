@@ -7,8 +7,14 @@ init_alembic:
 generate_migration:
 	alembic revision --autogenerate -m "${message}"
 
-apply_migration:
+migrate_all_to_head:
 	alembic upgrade head
+
+migrate_to_revision:
+	alembic upgrade ${revision}
+
+downgrade_to_revision:
+	alembic downgrade ${revision}
 
 start_server:
 	uvicorn main:app --reload
